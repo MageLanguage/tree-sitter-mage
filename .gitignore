@@ -21,6 +21,10 @@ dist/
 *.whl
 
 # C artifacts
+.cache
+.ccls-cache
+compile_commands.json
+
 *.a
 *.so
 *.so.*

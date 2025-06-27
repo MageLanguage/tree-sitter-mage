@@ -10,8 +10,6 @@
 module.exports = grammar({
   name: "mage",
 
-  conflicts: ($) => [[$.definition]],
-
   rules: {
     source_file: ($) => optional($.statement_chain),
     source: ($) => seq("{", optional($.statement_chain), "}"),
@@ -50,16 +48,17 @@ module.exports = grammar({
     identifier_chain: ($) => seq($.identifier, repeat(seq(".", $.identifier))),
     identifier: ($) => choice($.name, $.call),
 
+    expression: ($) => choice($.identifier_chain, $.math, $.string, $.source),
+
     definition_operation: ($) => choice(":", "="),
     definition: ($) =>
       seq(
         repeat1(seq($.identifier_chain, $.definition_operation)),
-        $.statement,
+        $.expression,
       ),
 
     statement_chain: ($) =>
       seq($.statement, repeat(seq(";", $.statement)), optional(";")),
-    statement: ($) =>
-      choice($.definition, $.identifier_chain, $.math, $.string, $.source),
+    statement: ($) => choice($.definition, $.expression),
   },
 });

@@ -264,6 +264,27 @@
         }
       ]
     },
+    "expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier_chain"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "math"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "source"
+        }
+      ]
+    },
     "definition_operation": {
       "type": "CHOICE",
       "members": [
@@ -298,7 +319,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "statement"
+          "name": "expression"
         }
       ]
     },
@@ -348,19 +369,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "identifier_chain"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "math"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "string"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "source"
+          "name": "expression"
         }
       ]
     }
@@ -371,11 +380,7 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [
-    [
-      "definition"
-    ]
-  ],
+  "conflicts": [],
   "precedences": [],
   "externals": [],
   "inline": [],

@@ -120,6 +120,10 @@
           "named": true
         },
         {
+          "type": "math",
+          "named": true
+        },
+        {
           "type": "math_operation",
           "named": true
         },

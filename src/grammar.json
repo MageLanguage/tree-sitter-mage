@@ -132,6 +132,10 @@
                 },
                 {
                   "type": "SYMBOL",
+                  "name": "math"
+                },
+                {
+                  "type": "SYMBOL",
                   "name": "number"
                 }
               ]
@@ -156,6 +160,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "identifier_chain"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "math"
                   },
                   {
                     "type": "SYMBOL",

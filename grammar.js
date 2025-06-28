@@ -26,7 +26,7 @@ module.exports = grammar({
 
     math_operation: ($) => choice("+", "-", "*", "/", "%"),
     math: ($) => {
-      let variable = choice($.identifier_chain, $.number);
+      let variable = choice($.identifier_chain, $.math, $.number);
 
       return seq(
         "[",

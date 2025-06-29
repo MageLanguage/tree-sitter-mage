@@ -32,7 +32,7 @@
       "required": true,
       "types": [
         {
-          "type": "definition_type",
+          "type": "definition_operation",
           "named": true
         },
         {
@@ -43,7 +43,7 @@
     }
   },
   {
-    "type": "definition_type",
+    "type": "definition_operation",
     "named": true,
     "fields": {}
   },

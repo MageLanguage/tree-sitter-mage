@@ -205,7 +205,7 @@
         }
       ]
     },
-    "definition_type": {
+    "definition_operation": {
       "type": "CHOICE",
       "members": [
         {
@@ -227,7 +227,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "definition_type"
+          "name": "definition_operation"
         }
       ]
     },
@@ -366,8 +366,11 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "definition"
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "definition"
+          }
         },
         {
           "type": "SYMBOL",

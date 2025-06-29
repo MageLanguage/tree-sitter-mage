@@ -38,8 +38,8 @@ module.exports = grammar({
 
     arithmetic: () => choice("+", "-", "*", "/", "%"),
 
-    definition_type: () => choice(":", "="),
-    definition: ($) => seq($.identifier_chain, $.definition_type),
+    definition_operation: () => choice(":", "="),
+    definition: ($) => seq($.identifier_chain, $.definition_operation),
 
     expression: ($) => {
       let variable = choice(
@@ -61,6 +61,6 @@ module.exports = grammar({
 
     statement_chain: ($) =>
       seq($.statement, repeat(seq(";", $.statement)), optional(";")),
-    statement: ($) => seq($.definition, $.expression),
+    statement: ($) => seq(repeat($.definition), $.expression),
   },
 });

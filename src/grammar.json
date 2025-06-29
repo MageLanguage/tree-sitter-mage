@@ -88,98 +88,6 @@
         }
       ]
     },
-    "math_operation": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "+"
-        },
-        {
-          "type": "STRING",
-          "value": "-"
-        },
-        {
-          "type": "STRING",
-          "value": "*"
-        },
-        {
-          "type": "STRING",
-          "value": "/"
-        },
-        {
-          "type": "STRING",
-          "value": "%"
-        }
-      ]
-    },
-    "math": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "["
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier_chain"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "math"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "number"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "math_operation"
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "identifier_chain"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "math"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "number"
-                  }
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "]"
-        }
-      ]
-    },
     "name": {
       "type": "PATTERN",
       "value": "\\w+"
@@ -203,7 +111,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "statement"
+                  "name": "expression"
                 },
                 {
                   "type": "REPEAT",
@@ -216,7 +124,7 @@
                       },
                       {
                         "type": "SYMBOL",
-                        "name": "statement"
+                        "name": "expression"
                       }
                     ]
                   }
@@ -272,28 +180,7 @@
         }
       ]
     },
-    "expression": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "identifier_chain"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "math"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "string"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "source"
-        }
-      ]
-    },
-    "definition_operation": {
+    "definition": {
       "type": "CHOICE",
       "members": [
         {
@@ -306,28 +193,122 @@
         }
       ]
     },
-    "definition": {
+    "arithmetic": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "+"
+        },
+        {
+          "type": "STRING",
+          "value": "-"
+        },
+        {
+          "type": "STRING",
+          "value": "*"
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
+          "type": "STRING",
+          "value": "%"
+        }
+      ]
+    },
+    "expression": {
       "type": "SEQ",
       "members": [
         {
-          "type": "REPEAT1",
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "arithmetic"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "prioritize"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "identifier_chain"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "number"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "string"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "source"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
           "content": {
             "type": "SEQ",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "identifier_chain"
+                "type": "REPEAT1",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "arithmetic"
+                }
               },
               {
-                "type": "SYMBOL",
-                "name": "definition_operation"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "prioritize"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier_chain"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "number"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "string"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "source"
+                  }
+                ]
               }
             ]
           }
+        }
+      ]
+    },
+    "prioritize": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
         },
         {
           "type": "SYMBOL",
           "name": "expression"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
         }
       ]
     },
@@ -369,11 +350,23 @@
       ]
     },
     "statement": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "definition"
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "identifier_chain"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "definition"
+              }
+            ]
+          }
         },
         {
           "type": "SYMBOL",

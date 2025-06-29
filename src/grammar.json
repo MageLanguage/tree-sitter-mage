@@ -180,19 +180,6 @@
         }
       ]
     },
-    "definition": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": ":"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        }
-      ]
-    },
     "arithmetic": {
       "type": "CHOICE",
       "members": [
@@ -215,6 +202,32 @@
         {
           "type": "STRING",
           "value": "%"
+        }
+      ]
+    },
+    "definition_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        }
+      ]
+    },
+    "definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier_chain"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "definition_type"
         }
       ]
     },
@@ -353,20 +366,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "identifier_chain"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "definition"
-              }
-            ]
-          }
+          "type": "SYMBOL",
+          "name": "definition"
         },
         {
           "type": "SYMBOL",

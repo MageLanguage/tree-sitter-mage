@@ -26,6 +26,25 @@
   {
     "type": "definition",
     "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "definition_type",
+          "named": true
+        },
+        {
+          "type": "identifier_chain",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "definition_type",
+    "named": true,
     "fields": {}
   },
   {
@@ -188,10 +207,6 @@
         },
         {
           "type": "expression",
-          "named": true
-        },
-        {
-          "type": "identifier_chain",
           "named": true
         }
       ]

@@ -36,9 +36,10 @@ module.exports = grammar({
     identifier_chain: ($) => seq($.identifier, repeat(seq(".", $.identifier))),
     identifier: ($) => choice($.name, $.call),
 
-    definition: () => choice(":", "="),
-
     arithmetic: () => choice("+", "-", "*", "/", "%"),
+
+    definition_type: () => choice(":", "="),
+    definition: ($) => seq($.identifier_chain, $.definition_type),
 
     expression: ($) => {
       let variable = choice(
@@ -60,7 +61,6 @@ module.exports = grammar({
 
     statement_chain: ($) =>
       seq($.statement, repeat(seq(";", $.statement)), optional(";")),
-    statement: ($) =>
-      seq(repeat(seq($.identifier_chain, $.definition)), $.expression),
+    statement: ($) => seq($.definition, $.expression),
   },
 });

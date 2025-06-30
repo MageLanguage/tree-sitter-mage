@@ -38,26 +38,16 @@ module.exports = grammar({
 
     arithmetic: () => choice("+", "-", "*", "/", "%"),
 
+    variable: ($) =>
+      choice($.prioritize, $.identifier_chain, $.number, $.string, $.source),
+
     definition_operation: () => choice(":", "="),
     definition: ($) => seq($.identifier_chain, $.definition_operation),
 
-    expression: ($) => {
-      let variable = choice(
-        $.prioritize,
-        $.identifier_chain,
-        $.number,
-        $.string,
-        $.source,
-      );
-
-      return seq(
-        repeat($.arithmetic),
-        variable,
-        repeat(seq(repeat1($.arithmetic), variable)),
-      );
-    },
-
     prioritize: ($) => seq("[", $.expression, "]"),
+
+    expression_section: ($) => seq(repeat($.arithmetic), $.variable),
+    expression: ($) => seq($.expression_section, repeat($.expression_section)),
 
     statement_chain: ($) =>
       seq($.statement, repeat(seq(";", $.statement)), optional(";")),

@@ -56,27 +56,26 @@
       "required": true,
       "types": [
         {
+          "type": "expression_section",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
           "type": "arithmetic",
           "named": true
         },
         {
-          "type": "identifier_chain",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "prioritize",
-          "named": true
-        },
-        {
-          "type": "source",
-          "named": true
-        },
-        {
-          "type": "string",
+          "type": "variable",
           "named": true
         }
       ]
@@ -222,6 +221,37 @@
       "types": [
         {
           "type": "statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier_chain",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "prioritize",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]

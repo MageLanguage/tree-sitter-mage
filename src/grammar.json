@@ -205,6 +205,31 @@
         }
       ]
     },
+    "variable": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "prioritize"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier_chain"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "source"
+        }
+      ]
+    },
     "definition_operation": {
       "type": "CHOICE",
       "members": [
@@ -231,83 +256,6 @@
         }
       ]
     },
-    "expression": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "arithmetic"
-          }
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "prioritize"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "identifier_chain"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "number"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "string"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "source"
-            }
-          ]
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "REPEAT1",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "arithmetic"
-                }
-              },
-              {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "prioritize"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "identifier_chain"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "number"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "string"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "source"
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
     "prioritize": {
       "type": "SEQ",
       "members": [
@@ -322,6 +270,38 @@
         {
           "type": "STRING",
           "value": "]"
+        }
+      ]
+    },
+    "expression_section": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "arithmetic"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable"
+        }
+      ]
+    },
+    "expression": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "expression_section"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "expression_section"
+          }
         }
       ]
     },

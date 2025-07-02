@@ -23,16 +23,16 @@ module.exports = grammar({
       return choice($.call, $.name);
     },
 
-    constant_as: () => ":",
-    variable_as: () => "=",
+    constant: () => ":",
+    variable: () => "=",
 
-    _as: ($) => choice($.constant_as, $.variable_as),
+    _as: ($) => choice($.constant, $.variable),
 
     _expression: ($) => {
-      return choice($._string, $._number, $.call, $.name);
+      return choice($._string, $._number, $.math, $.call, $.name);
     },
 
-    escape_sequence: () =>
+    escape: () =>
       token.immediate(
         seq(
           "\\",
@@ -47,52 +47,42 @@ module.exports = grammar({
         ),
       ),
 
-    unescaped_single_quoted_string_fragment: () =>
+    single_quoted_unescaped_string: () =>
       token.immediate(prec(1, /[^'\\\r\n]+/)),
-    unescaped_double_quoted_string_fragment: () =>
+    double_quoted_unescaped_string: () =>
       token.immediate(prec(1, /[^"\\\r\n]+/)),
 
-    single_quoted_string: ($) => {
+    single_quoted: ($) => {
       return seq(
         "'",
         repeat(
-          choice(
-            alias($.unescaped_single_quoted_string_fragment, $.string_fragment),
-            $.escape_sequence,
-          ),
+          choice(alias($.single_quoted_unescaped_string, $.string), $.escape),
         ),
         "'",
       );
     },
-    double_quoted_string: ($) => {
+    double_quoted: ($) => {
       return seq(
         '"',
         repeat(
-          choice(
-            alias($.unescaped_double_quoted_string_fragment, $.string_fragment),
-            $.escape_sequence,
-          ),
+          choice(alias($.double_quoted_unescaped_string, $.string), $.escape),
         ),
         '"',
       );
     },
 
     _string: ($) => {
-      return choice($.single_quoted_string, $.double_quoted_string);
+      return choice($.single_quoted, $.double_quoted);
     },
 
-    binary_number: () => /0[Bb][0-1]+/,
-    octal_number: () => /0[Oo][0-7]+/,
-    decimal_number: () => /(0[Dd])?[0-9]+/,
-    hex_number: () => /0[Xx][0-9A-Fa-f]+/,
+    zero: () => /0/,
+    binary: () => /0[Bb][0-1]+/,
+    octal: () => /0[Oo][0-7]+/,
+    decimal: () => /0[Dd][0-9]+/,
+    hex: () => /0[Xx][0-9A-Fa-f]+/,
 
     _number: ($) => {
-      return choice(
-        $.binary_number,
-        $.octal_number,
-        $.decimal_number,
-        $.hex_number,
-      );
+      return choice($.zero, $.binary, $.octal, $.decimal, $.hex);
     },
 
     call: ($) => {
@@ -104,6 +94,19 @@ module.exports = grammar({
         ),
         ")",
       );
+    },
+
+    add: () => "+",
+    substract: () => "-",
+    multiply: () => "*",
+    divide: () => "/",
+    modulo: () => "%",
+
+    _arithmetic: ($) => {
+      return choice($.add, $.substract, $.multiply, $.divide, $.modulo);
+    },
+    math: ($) => {
+      return prec.left(1, seq($._expression, $._arithmetic, $._expression));
     },
 
     name: () => /\w+/,

@@ -16,24 +16,20 @@ module.exports = grammar({
     },
 
     statement: ($) => {
-      return seq(
-        optional(seq($._definition, $._definition_type)),
-        $._expression,
-      );
+      return seq(optional(seq($._definition, $._as)), $._expression);
     },
 
     _definition: ($) => {
       return choice($.call, $.name);
     },
 
-    constant_definition_type: () => ":",
-    variable_definition_type: () => "=",
+    constant_as: () => ":",
+    variable_as: () => "=",
 
-    _definition_type: ($) =>
-      choice($.constant_definition_type, $.variable_definition_type),
+    _as: ($) => choice($.constant_as, $.variable_as),
 
     _expression: ($) => {
-      return choice($.call, $.name, $._string, $._number);
+      return choice($._string, $._number, $.call, $.name);
     },
 
     escape_sequence: () =>

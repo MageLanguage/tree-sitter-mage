@@ -1,43 +1,5 @@
 [
   {
-    "type": "_expression",
-    "named": true,
-    "subtypes": [
-      {
-        "type": "binary_number",
-        "named": true
-      },
-      {
-        "type": "call",
-        "named": true
-      },
-      {
-        "type": "decimal_number",
-        "named": true
-      },
-      {
-        "type": "double_quoted_string",
-        "named": true
-      },
-      {
-        "type": "hex_number",
-        "named": true
-      },
-      {
-        "type": "name",
-        "named": true
-      },
-      {
-        "type": "octal_number",
-        "named": true
-      },
-      {
-        "type": "single_quoted_string",
-        "named": true
-      }
-    ]
-  },
-  {
     "type": "call",
     "named": true,
     "fields": {},
@@ -46,7 +8,35 @@
       "required": true,
       "types": [
         {
-          "type": "_expression",
+          "type": "binary_number",
+          "named": true
+        },
+        {
+          "type": "call",
+          "named": true
+        },
+        {
+          "type": "decimal_number",
+          "named": true
+        },
+        {
+          "type": "double_quoted_string",
+          "named": true
+        },
+        {
+          "type": "hex_number",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "octal_number",
+          "named": true
+        },
+        {
+          "type": "single_quoted_string",
           "named": true
         }
       ]
@@ -115,15 +105,43 @@
       "required": true,
       "types": [
         {
-          "type": "_expression",
+          "type": "binary_number",
           "named": true
         },
         {
-          "type": "constant_definition_type",
+          "type": "call",
           "named": true
         },
         {
-          "type": "variable_definition_type",
+          "type": "constant_as",
+          "named": true
+        },
+        {
+          "type": "decimal_number",
+          "named": true
+        },
+        {
+          "type": "double_quoted_string",
+          "named": true
+        },
+        {
+          "type": "hex_number",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "octal_number",
+          "named": true
+        },
+        {
+          "type": "single_quoted_string",
+          "named": true
+        },
+        {
+          "type": "variable_as",
           "named": true
         }
       ]
@@ -158,7 +176,7 @@
     "named": true
   },
   {
-    "type": "constant_definition_type",
+    "type": "constant_as",
     "named": true
   },
   {
@@ -186,7 +204,7 @@
     "named": true
   },
   {
-    "type": "variable_definition_type",
+    "type": "variable_as",
     "named": true
   }
 ]

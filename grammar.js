@@ -39,7 +39,7 @@ module.exports = grammar({
         $.logical,
         $.call,
         $.identifier,
-        $.group,
+        $.parenthesize,
       );
     },
 
@@ -114,11 +114,11 @@ module.exports = grammar({
     call: ($) => {
       return seq(
         $._assignable,
-        "(",
+        "[",
         optional(
           seq($._expression, repeat(seq(",", $._expression)), optional(",")),
         ),
-        ")",
+        "]",
       );
     },
 
@@ -210,8 +210,8 @@ module.exports = grammar({
       );
     },
 
-    group: ($) => {
-      return seq("[", $._expression, "]");
+    parenthesize: ($) => {
+      return seq("(", $._expression, ")");
     },
 
     identifier: () => /\w+/,

@@ -115,7 +115,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "group"
+          "name": "parenthesize"
         }
       ]
     },
@@ -352,7 +352,7 @@
         },
         {
           "type": "STRING",
-          "value": "("
+          "value": "["
         },
         {
           "type": "CHOICE",
@@ -401,7 +401,7 @@
         },
         {
           "type": "STRING",
-          "value": ")"
+          "value": "]"
         }
       ]
     },
@@ -720,12 +720,12 @@
         }
       ]
     },
-    "group": {
+    "parenthesize": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "["
+          "value": "("
         },
         {
           "type": "SYMBOL",
@@ -733,7 +733,7 @@
         },
         {
           "type": "STRING",
-          "value": "]"
+          "value": ")"
         }
       ]
     },

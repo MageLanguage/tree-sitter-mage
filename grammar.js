@@ -15,6 +15,8 @@ module.exports = grammar({
       return repeat(seq($.statement, ";"));
     },
 
+    source: ($) => seq("{", repeat(seq($.statement, ";")), "}"),
+
     statement: ($) => {
       return seq(
         optional(seq($._assignable, choice($.constant, $.variable))),
@@ -31,8 +33,10 @@ module.exports = grammar({
 
     _expression: ($) => {
       return choice(
+        $.source,
         $._string,
         $._number,
+        $._boolean,
         $.unary,
         $.binary,
         $.comparison,
@@ -108,6 +112,16 @@ module.exports = grammar({
         alias($.number_octal, $.octal),
         alias($.number_decimal, $.decimal),
         alias($.number_hex, $.hex),
+      );
+    },
+
+    boolean_false: () => "false",
+    boolean_true: () => "true",
+
+    _boolean: ($) => {
+      return choice(
+        alias($.boolean_false, $.false),
+        alias($.boolean_true, $.true),
       );
     },
 

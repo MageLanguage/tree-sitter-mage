@@ -36,6 +36,10 @@
           "named": true
         },
         {
+          "type": "false",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -68,7 +72,15 @@
           "named": true
         },
         {
+          "type": "source",
+          "named": true
+        },
+        {
           "type": "subtract",
+          "named": true
+        },
+        {
+          "type": "true",
           "named": true
         },
         {
@@ -111,6 +123,10 @@
           "named": true
         },
         {
+          "type": "false",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -132,6 +148,14 @@
         },
         {
           "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "true",
           "named": true
         },
         {
@@ -178,6 +202,10 @@
           "named": true
         },
         {
+          "type": "false",
+          "named": true
+        },
+        {
           "type": "greater_equal",
           "named": true
         },
@@ -219,6 +247,14 @@
         },
         {
           "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "true",
           "named": true
         },
         {
@@ -284,6 +320,10 @@
           "named": true
         },
         {
+          "type": "false",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -309,6 +349,14 @@
         },
         {
           "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "true",
           "named": true
         },
         {
@@ -351,6 +399,10 @@
           "named": true
         },
         {
+          "type": "false",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -372,6 +424,14 @@
         },
         {
           "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "true",
           "named": true
         },
         {
@@ -399,6 +459,21 @@
         },
         {
           "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "statement",
           "named": true
         }
       ]
@@ -453,6 +528,10 @@
           "named": true
         },
         {
+          "type": "false",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -474,6 +553,14 @@
         },
         {
           "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "true",
           "named": true
         },
         {
@@ -524,6 +611,10 @@
           "named": true
         },
         {
+          "type": "false",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -548,7 +639,15 @@
           "named": true
         },
         {
+          "type": "source",
+          "named": true
+        },
+        {
           "type": "subtract",
+          "named": true
+        },
+        {
+          "type": "true",
           "named": true
         },
         {
@@ -623,6 +722,10 @@
     "named": true
   },
   {
+    "type": "false",
+    "named": true
+  },
+  {
     "type": "greater_equal",
     "named": true
   },
@@ -675,11 +778,23 @@
     "named": true
   },
   {
+    "type": "true",
+    "named": true
+  },
+  {
     "type": "variable",
     "named": true
   },
   {
     "type": "zero",
     "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]

@@ -18,6 +18,35 @@
         ]
       }
     },
+    "source": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "statement"
+              },
+              {
+                "type": "STRING",
+                "value": ";"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
     "statement": {
       "type": "SEQ",
       "members": [
@@ -83,11 +112,19 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "source"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_string"
         },
         {
           "type": "SYMBOL",
           "name": "_number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_boolean"
         },
         {
           "type": "SYMBOL",
@@ -340,6 +377,37 @@
           },
           "named": true,
           "value": "hex"
+        }
+      ]
+    },
+    "boolean_false": {
+      "type": "STRING",
+      "value": "false"
+    },
+    "boolean_true": {
+      "type": "STRING",
+      "value": "true"
+    },
+    "_boolean": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "boolean_false"
+          },
+          "named": true,
+          "value": "false"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "boolean_true"
+          },
+          "named": true,
+          "value": "true"
         }
       ]
     },

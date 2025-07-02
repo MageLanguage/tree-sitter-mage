@@ -459,7 +459,7 @@
     },
     "unary": {
       "type": "PREC_RIGHT",
-      "value": 1,
+      "value": 6,
       "content": {
         "type": "SEQ",
         "members": [
@@ -494,75 +494,102 @@
       }
     },
     "binary": {
-      "type": "PREC_RIGHT",
-      "value": 1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_expression"
-          },
-          {
-            "type": "CHOICE",
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PREC_RIGHT",
+          "value": 5,
+          "content": {
+            "type": "SEQ",
             "members": [
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "operator_add"
-                },
-                "named": true,
-                "value": "add"
+                "type": "SYMBOL",
+                "name": "_expression"
               },
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "operator_subtract"
-                },
-                "named": true,
-                "value": "subtract"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "operator_multiply"
+                    },
+                    "named": true,
+                    "value": "multiply"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "operator_divide"
+                    },
+                    "named": true,
+                    "value": "divide"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "operator_modulo"
+                    },
+                    "named": true,
+                    "value": "modulo"
+                  }
+                ]
               },
               {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "operator_multiply"
-                },
-                "named": true,
-                "value": "multiply"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "operator_divide"
-                },
-                "named": true,
-                "value": "divide"
-              },
-              {
-                "type": "ALIAS",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "operator_modulo"
-                },
-                "named": true,
-                "value": "modulo"
+                "type": "SYMBOL",
+                "name": "_expression"
               }
             ]
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_expression"
           }
-        ]
-      }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 4,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_expression"
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "operator_add"
+                    },
+                    "named": true,
+                    "value": "add"
+                  },
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "operator_subtract"
+                    },
+                    "named": true,
+                    "value": "subtract"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_expression"
+              }
+            ]
+          }
+        }
+      ]
     },
     "comparison": {
       "type": "PREC_RIGHT",
-      "value": 1,
+      "value": 3,
       "content": {
         "type": "SEQ",
         "members": [
@@ -637,18 +664,18 @@
       }
     },
     "logical": {
-      "type": "PREC_RIGHT",
-      "value": 1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_expression"
-          },
-          {
-            "type": "CHOICE",
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PREC_RIGHT",
+          "value": 2,
+          "content": {
+            "type": "SEQ",
             "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_expression"
+              },
               {
                 "type": "ALIAS",
                 "content": {
@@ -659,6 +686,23 @@
                 "value": "and"
               },
               {
+                "type": "SYMBOL",
+                "name": "_expression"
+              }
+            ]
+          }
+        },
+        {
+          "type": "PREC_RIGHT",
+          "value": 1,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_expression"
+              },
+              {
                 "type": "ALIAS",
                 "content": {
                   "type": "SYMBOL",
@@ -666,15 +710,15 @@
                 },
                 "named": true,
                 "value": "or"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_expression"
               }
             ]
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_expression"
           }
-        ]
-      }
+        }
+      ]
     },
     "prioritize": {
       "type": "SEQ",

@@ -140,7 +140,7 @@ module.exports = grammar({
 
     unary: ($) => {
       return prec.right(
-        1,
+        6,
         seq(
           choice(
             alias($.operator_add, $.add),
@@ -152,25 +152,36 @@ module.exports = grammar({
     },
 
     binary: ($) => {
-      return prec.right(
-        1,
-        seq(
-          $._expression,
-          choice(
-            alias($.operator_add, $.add),
-            alias($.operator_subtract, $.subtract),
-            alias($.operator_multiply, $.multiply),
-            alias($.operator_divide, $.divide),
-            alias($.operator_modulo, $.modulo),
+      return choice(
+        prec.right(
+          5,
+          seq(
+            $._expression,
+            choice(
+              alias($.operator_multiply, $.multiply),
+              alias($.operator_divide, $.divide),
+              alias($.operator_modulo, $.modulo),
+            ),
+            $._expression,
           ),
-          $._expression,
+        ),
+        prec.right(
+          4,
+          seq(
+            $._expression,
+            choice(
+              alias($.operator_add, $.add),
+              alias($.operator_subtract, $.subtract),
+            ),
+            $._expression,
+          ),
         ),
       );
     },
 
     comparison: ($) => {
       return prec.right(
-        1,
+        3,
         seq(
           $._expression,
           choice(
@@ -187,12 +198,14 @@ module.exports = grammar({
     },
 
     logical: ($) => {
-      return prec.right(
-        1,
-        seq(
-          $._expression,
-          choice(alias($.operator_and, $.and), alias($.operator_or, $.or)),
-          $._expression,
+      return choice(
+        prec.right(
+          2,
+          seq($._expression, alias($.operator_and, $.and), $._expression),
+        ),
+        prec.right(
+          1,
+          seq($._expression, alias($.operator_or, $.or), $._expression),
         ),
       );
     },

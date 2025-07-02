@@ -35,6 +35,8 @@ module.exports = grammar({
         $._number,
         $.unary,
         $.binary,
+        $.comparison,
+        $.logical,
         $.call,
         $.name,
         $.prioritize,
@@ -56,32 +58,41 @@ module.exports = grammar({
         ),
       ),
 
-    single_quoted_unescaped_string: () =>
+    string_single_quoted_unescaped_string: () =>
       token.immediate(prec(1, /[^'\\\r\n]+/)),
-    double_quoted_unescaped_string: () =>
+    string_double_quoted_unescaped_string: () =>
       token.immediate(prec(1, /[^"\\\r\n]+/)),
 
-    single_quoted: ($) => {
+    string_single_quoted: ($) => {
       return seq(
         "'",
         repeat(
-          choice(alias($.single_quoted_unescaped_string, $.string), $.escape),
+          choice(
+            alias($.string_single_quoted_unescaped_string, $.string),
+            $.escape,
+          ),
         ),
         "'",
       );
     },
-    double_quoted: ($) => {
+    string_double_quoted: ($) => {
       return seq(
         '"',
         repeat(
-          choice(alias($.double_quoted_unescaped_string, $.string), $.escape),
+          choice(
+            alias($.string_double_quoted_unescaped_string, $.string),
+            $.escape,
+          ),
         ),
         '"',
       );
     },
 
     _string: ($) => {
-      return choice($.single_quoted, $.double_quoted);
+      return choice(
+        alias($.string_single_quoted, $.single_quoted),
+        alias($.string_double_quoted, $.double_quoted),
+      );
     },
 
     number_zero: () => /0/,
@@ -92,11 +103,11 @@ module.exports = grammar({
 
     _number: ($) => {
       return choice(
-        $.number_zero,
-        $.number_binary,
-        $.number_octal,
-        $.number_decimal,
-        $.number_hex,
+        alias($.number_zero, $.zero),
+        alias($.number_binary, $.binary),
+        alias($.number_octal, $.octal),
+        alias($.number_decimal, $.decimal),
+        alias($.number_hex, $.hex),
       );
     },
 
@@ -111,25 +122,79 @@ module.exports = grammar({
       );
     },
 
-    add: () => "+",
-    subtract: () => "-",
-    multiply: () => "*",
-    divide: () => "/",
-    modulo: () => "%",
+    operator_add: () => "+",
+    operator_subtract: () => "-",
+    operator_multiply: () => "*",
+    operator_divide: () => "/",
+    operator_modulo: () => "%",
+
+    operator_equal: () => "==",
+    operator_not_equal: () => "!=",
+    operator_less_than: () => "<",
+    operator_greater_than: () => ">",
+    operator_less_equal: () => "<=",
+    operator_greater_equal: () => ">=",
+
+    operator_and: () => "&&",
+    operator_or: () => "||",
+
+    unary: ($) => {
+      return prec.right(
+        1,
+        seq(
+          choice(
+            alias($.operator_add, $.add),
+            alias($.operator_subtract, $.subtract),
+          ),
+          $._expression,
+        ),
+      );
+    },
 
     binary: ($) => {
       return prec.right(
         1,
         seq(
           $._expression,
-          choice($.add, $.subtract, $.multiply, $.divide, $.modulo),
+          choice(
+            alias($.operator_add, $.add),
+            alias($.operator_subtract, $.subtract),
+            alias($.operator_multiply, $.multiply),
+            alias($.operator_divide, $.divide),
+            alias($.operator_modulo, $.modulo),
+          ),
           $._expression,
         ),
       );
     },
 
-    unary: ($) => {
-      return prec.right(1, seq(choice($.add, $.subtract), $._expression));
+    comparison: ($) => {
+      return prec.right(
+        1,
+        seq(
+          $._expression,
+          choice(
+            alias($.operator_equal, $.equal),
+            alias($.operator_not_equal, $.not_equal),
+            alias($.operator_less_than, $.less_than),
+            alias($.operator_greater_than, $.greater_than),
+            alias($.operator_less_equal, $.less_equal),
+            alias($.operator_greater_equal, $.greater_equal),
+          ),
+          $._expression,
+        ),
+      );
+    },
+
+    logical: ($) => {
+      return prec.right(
+        1,
+        seq(
+          $._expression,
+          choice(alias($.operator_and, $.and), alias($.operator_or, $.or)),
+          $._expression,
+        ),
+      );
     },
 
     prioritize: ($) => {

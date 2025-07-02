@@ -1,5 +1,84 @@
 [
   {
+    "type": "binary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "add",
+          "named": true
+        },
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "call",
+          "named": true
+        },
+        {
+          "type": "divide",
+          "named": true
+        },
+        {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "modulo",
+          "named": true
+        },
+        {
+          "type": "multiply",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "number_binary",
+          "named": true
+        },
+        {
+          "type": "number_decimal",
+          "named": true
+        },
+        {
+          "type": "number_hex",
+          "named": true
+        },
+        {
+          "type": "number_octal",
+          "named": true
+        },
+        {
+          "type": "number_zero",
+          "named": true
+        },
+        {
+          "type": "prioritize",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "subtract",
+          "named": true
+        },
+        {
+          "type": "unary",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "call",
     "named": true,
     "fields": {},
@@ -16,19 +95,7 @@
           "named": true
         },
         {
-          "type": "decimal",
-          "named": true
-        },
-        {
           "type": "double_quoted",
-          "named": true
-        },
-        {
-          "type": "hex",
-          "named": true
-        },
-        {
-          "type": "math",
           "named": true
         },
         {
@@ -36,7 +103,27 @@
           "named": true
         },
         {
-          "type": "octal",
+          "type": "number_binary",
+          "named": true
+        },
+        {
+          "type": "number_decimal",
+          "named": true
+        },
+        {
+          "type": "number_hex",
+          "named": true
+        },
+        {
+          "type": "number_octal",
+          "named": true
+        },
+        {
+          "type": "number_zero",
+          "named": true
+        },
+        {
+          "type": "prioritize",
           "named": true
         },
         {
@@ -45,10 +132,6 @@
         },
         {
           "type": "unary",
-          "named": true
-        },
-        {
-          "type": "zero",
           "named": true
         }
       ]
@@ -74,17 +157,13 @@
     }
   },
   {
-    "type": "math",
+    "type": "prioritize",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "add",
-          "named": true
-        },
         {
           "type": "binary",
           "named": true
@@ -94,31 +173,7 @@
           "named": true
         },
         {
-          "type": "decimal",
-          "named": true
-        },
-        {
-          "type": "divide",
-          "named": true
-        },
-        {
           "type": "double_quoted",
-          "named": true
-        },
-        {
-          "type": "hex",
-          "named": true
-        },
-        {
-          "type": "math",
-          "named": true
-        },
-        {
-          "type": "modulo",
-          "named": true
-        },
-        {
-          "type": "multiply",
           "named": true
         },
         {
@@ -126,7 +181,27 @@
           "named": true
         },
         {
-          "type": "octal",
+          "type": "number_binary",
+          "named": true
+        },
+        {
+          "type": "number_decimal",
+          "named": true
+        },
+        {
+          "type": "number_hex",
+          "named": true
+        },
+        {
+          "type": "number_octal",
+          "named": true
+        },
+        {
+          "type": "number_zero",
+          "named": true
+        },
+        {
+          "type": "prioritize",
           "named": true
         },
         {
@@ -134,15 +209,7 @@
           "named": true
         },
         {
-          "type": "substract",
-          "named": true
-        },
-        {
           "type": "unary",
-          "named": true
-        },
-        {
-          "type": "zero",
           "named": true
         }
       ]
@@ -204,19 +271,7 @@
           "named": true
         },
         {
-          "type": "decimal",
-          "named": true
-        },
-        {
           "type": "double_quoted",
-          "named": true
-        },
-        {
-          "type": "hex",
-          "named": true
-        },
-        {
-          "type": "math",
           "named": true
         },
         {
@@ -224,7 +279,27 @@
           "named": true
         },
         {
-          "type": "octal",
+          "type": "number_binary",
+          "named": true
+        },
+        {
+          "type": "number_decimal",
+          "named": true
+        },
+        {
+          "type": "number_hex",
+          "named": true
+        },
+        {
+          "type": "number_octal",
+          "named": true
+        },
+        {
+          "type": "number_zero",
+          "named": true
+        },
+        {
+          "type": "prioritize",
           "named": true
         },
         {
@@ -237,10 +312,6 @@
         },
         {
           "type": "variable",
-          "named": true
-        },
-        {
-          "type": "zero",
           "named": true
         }
       ]
@@ -267,19 +338,7 @@
           "named": true
         },
         {
-          "type": "decimal",
-          "named": true
-        },
-        {
           "type": "double_quoted",
-          "named": true
-        },
-        {
-          "type": "hex",
-          "named": true
-        },
-        {
-          "type": "math",
           "named": true
         },
         {
@@ -287,7 +346,27 @@
           "named": true
         },
         {
-          "type": "octal",
+          "type": "number_binary",
+          "named": true
+        },
+        {
+          "type": "number_decimal",
+          "named": true
+        },
+        {
+          "type": "number_hex",
+          "named": true
+        },
+        {
+          "type": "number_octal",
+          "named": true
+        },
+        {
+          "type": "number_zero",
+          "named": true
+        },
+        {
+          "type": "prioritize",
           "named": true
         },
         {
@@ -295,15 +374,11 @@
           "named": true
         },
         {
-          "type": "substract",
+          "type": "subtract",
           "named": true
         },
         {
           "type": "unary",
-          "named": true
-        },
-        {
-          "type": "zero",
           "named": true
         }
       ]
@@ -334,19 +409,19 @@
     "named": false
   },
   {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
     "type": "add",
     "named": true
   },
   {
-    "type": "binary",
-    "named": true
-  },
-  {
     "type": "constant",
-    "named": true
-  },
-  {
-    "type": "decimal",
     "named": true
   },
   {
@@ -355,10 +430,6 @@
   },
   {
     "type": "escape",
-    "named": true
-  },
-  {
-    "type": "hex",
     "named": true
   },
   {
@@ -374,7 +445,23 @@
     "named": true
   },
   {
-    "type": "octal",
+    "type": "number_binary",
+    "named": true
+  },
+  {
+    "type": "number_decimal",
+    "named": true
+  },
+  {
+    "type": "number_hex",
+    "named": true
+  },
+  {
+    "type": "number_octal",
+    "named": true
+  },
+  {
+    "type": "number_zero",
     "named": true
   },
   {
@@ -382,15 +469,11 @@
     "named": true
   },
   {
-    "type": "substract",
+    "type": "subtract",
     "named": true
   },
   {
     "type": "variable",
-    "named": true
-  },
-  {
-    "type": "zero",
     "named": true
   }
 ]

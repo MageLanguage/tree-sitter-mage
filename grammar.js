@@ -29,7 +29,15 @@ module.exports = grammar({
     _as: ($) => choice($.constant, $.variable),
 
     _expression: ($) => {
-      return choice($._string, $._number, $.unary, $.math, $.call, $.name);
+      return choice(
+        $._string,
+        $._number,
+        $.unary,
+        $.binary,
+        $.call,
+        $.name,
+        $.prioritize,
+      );
     },
 
     escape: () =>
@@ -75,14 +83,20 @@ module.exports = grammar({
       return choice($.single_quoted, $.double_quoted);
     },
 
-    zero: () => /0/,
-    binary: () => /0[Bb][0-1]+/,
-    octal: () => /0[Oo][0-7]+/,
-    decimal: () => /0[Dd][0-9]+/,
-    hex: () => /0[Xx][0-9A-Fa-f]+/,
+    number_zero: () => /0/,
+    number_binary: () => /0[Bb][0-1]+/,
+    number_octal: () => /0[Oo][0-7]+/,
+    number_decimal: () => /0[Dd][0-9]+/,
+    number_hex: () => /0[Xx][0-9A-Fa-f]+/,
 
     _number: ($) => {
-      return choice($.zero, $.binary, $.octal, $.decimal, $.hex);
+      return choice(
+        $.number_zero,
+        $.number_binary,
+        $.number_octal,
+        $.number_decimal,
+        $.number_hex,
+      );
     },
 
     call: ($) => {
@@ -97,21 +111,28 @@ module.exports = grammar({
     },
 
     add: () => "+",
-    substract: () => "-",
+    subtract: () => "-",
     multiply: () => "*",
     divide: () => "/",
     modulo: () => "%",
 
-    _arithmetic: ($) => {
-      return choice($.add, $.substract, $.multiply, $.divide, $.modulo);
-    },
-
-    math: ($) => {
-      return prec.right(1, seq($._expression, $._arithmetic, $._expression));
+    binary: ($) => {
+      return prec.right(
+        1,
+        seq(
+          $._expression,
+          choice($.add, $.subtract, $.multiply, $.divide, $.modulo),
+          $._expression,
+        ),
+      );
     },
 
     unary: ($) => {
-      return prec.right(1, seq(choice($.add, $.substract), $._expression));
+      return prec.right(1, seq(choice($.add, $.subtract), $._expression));
+    },
+
+    prioritize: ($) => {
+      return seq("[", $._expression, "]");
     },
 
     name: () => /\w+/,

@@ -36,7 +36,15 @@
           "named": true
         },
         {
+          "type": "group",
+          "named": true
+        },
+        {
           "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -52,15 +60,7 @@
           "named": true
         },
         {
-          "type": "name",
-          "named": true
-        },
-        {
           "type": "octal",
-          "named": true
-        },
-        {
-          "type": "prioritize",
           "named": true
         },
         {
@@ -111,7 +111,15 @@
           "named": true
         },
         {
+          "type": "group",
+          "named": true
+        },
+        {
           "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -119,15 +127,7 @@
           "named": true
         },
         {
-          "type": "name",
-          "named": true
-        },
-        {
           "type": "octal",
-          "named": true
-        },
-        {
-          "type": "prioritize",
           "named": true
         },
         {
@@ -186,7 +186,15 @@
           "named": true
         },
         {
+          "type": "group",
+          "named": true
+        },
+        {
           "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -202,19 +210,11 @@
           "named": true
         },
         {
-          "type": "name",
-          "named": true
-        },
-        {
           "type": "not_equal",
           "named": true
         },
         {
           "type": "octal",
-          "named": true
-        },
-        {
-          "type": "prioritize",
           "named": true
         },
         {
@@ -246,6 +246,69 @@
         },
         {
           "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "group",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "call",
+          "named": true
+        },
+        {
+          "type": "comparison",
+          "named": true
+        },
+        {
+          "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "logical",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "unary",
+          "named": true
+        },
+        {
+          "type": "zero",
           "named": true
         }
       ]
@@ -284,15 +347,19 @@
           "named": true
         },
         {
+          "type": "group",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
         {
-          "type": "logical",
+          "type": "identifier",
           "named": true
         },
         {
-          "type": "name",
+          "type": "logical",
           "named": true
         },
         {
@@ -301,73 +368,6 @@
         },
         {
           "type": "or",
-          "named": true
-        },
-        {
-          "type": "prioritize",
-          "named": true
-        },
-        {
-          "type": "single_quoted",
-          "named": true
-        },
-        {
-          "type": "unary",
-          "named": true
-        },
-        {
-          "type": "zero",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "prioritize",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "binary",
-          "named": true
-        },
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comparison",
-          "named": true
-        },
-        {
-          "type": "decimal",
-          "named": true
-        },
-        {
-          "type": "double_quoted",
-          "named": true
-        },
-        {
-          "type": "hex",
-          "named": true
-        },
-        {
-          "type": "logical",
-          "named": true
-        },
-        {
-          "type": "name",
-          "named": true
-        },
-        {
-          "type": "octal",
-          "named": true
-        },
-        {
-          "type": "prioritize",
           "named": true
         },
         {
@@ -453,7 +453,15 @@
           "named": true
         },
         {
+          "type": "group",
+          "named": true
+        },
+        {
           "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -461,15 +469,7 @@
           "named": true
         },
         {
-          "type": "name",
-          "named": true
-        },
-        {
           "type": "octal",
-          "named": true
-        },
-        {
-          "type": "prioritize",
           "named": true
         },
         {
@@ -524,7 +524,15 @@
           "named": true
         },
         {
+          "type": "group",
+          "named": true
+        },
+        {
           "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -532,15 +540,7 @@
           "named": true
         },
         {
-          "type": "name",
-          "named": true
-        },
-        {
           "type": "octal",
-          "named": true
-        },
-        {
-          "type": "prioritize",
           "named": true
         },
         {
@@ -635,6 +635,10 @@
     "named": true
   },
   {
+    "type": "identifier",
+    "named": true
+  },
+  {
     "type": "less_equal",
     "named": true
   },
@@ -648,10 +652,6 @@
   },
   {
     "type": "multiply",
-    "named": true
-  },
-  {
-    "type": "name",
     "named": true
   },
   {

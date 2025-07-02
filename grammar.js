@@ -17,13 +17,13 @@ module.exports = grammar({
 
     statement: ($) => {
       return seq(
-        optional(seq($._definition, choice($.constant, $.variable))),
+        optional(seq($._assignable, choice($.constant, $.variable))),
         $._expression,
       );
     },
 
-    _definition: ($) => {
-      return choice($.call, $.name);
+    _assignable: ($) => {
+      return choice($.call, $.identifier);
     },
 
     constant: () => ":",
@@ -38,8 +38,8 @@ module.exports = grammar({
         $.comparison,
         $.logical,
         $.call,
-        $.name,
-        $.prioritize,
+        $.identifier,
+        $.group,
       );
     },
 
@@ -113,7 +113,7 @@ module.exports = grammar({
 
     call: ($) => {
       return seq(
-        $._definition,
+        $._assignable,
         "(",
         optional(
           seq($._expression, repeat(seq(",", $._expression)), optional(",")),
@@ -153,7 +153,7 @@ module.exports = grammar({
 
     binary: ($) => {
       return choice(
-        prec.right(
+        prec.left(
           5,
           seq(
             $._expression,
@@ -165,7 +165,7 @@ module.exports = grammar({
             $._expression,
           ),
         ),
-        prec.right(
+        prec.left(
           4,
           seq(
             $._expression,
@@ -210,10 +210,10 @@ module.exports = grammar({
       );
     },
 
-    prioritize: ($) => {
+    group: ($) => {
       return seq("[", $._expression, "]");
     },
 
-    name: () => /\w+/,
+    identifier: () => /\w+/,
   },
 });

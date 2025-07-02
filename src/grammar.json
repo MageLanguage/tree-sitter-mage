@@ -29,7 +29,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_definition"
+                  "name": "_assignable"
                 },
                 {
                   "type": "CHOICE",
@@ -57,7 +57,7 @@
         }
       ]
     },
-    "_definition": {
+    "_assignable": {
       "type": "CHOICE",
       "members": [
         {
@@ -66,7 +66,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "name"
+          "name": "identifier"
         }
       ]
     },
@@ -111,11 +111,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "name"
+          "name": "identifier"
         },
         {
           "type": "SYMBOL",
-          "name": "prioritize"
+          "name": "group"
         }
       ]
     },
@@ -348,7 +348,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_definition"
+          "name": "_assignable"
         },
         {
           "type": "STRING",
@@ -497,7 +497,7 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "PREC_RIGHT",
+          "type": "PREC_LEFT",
           "value": 5,
           "content": {
             "type": "SEQ",
@@ -546,7 +546,7 @@
           }
         },
         {
-          "type": "PREC_RIGHT",
+          "type": "PREC_LEFT",
           "value": 4,
           "content": {
             "type": "SEQ",
@@ -720,7 +720,7 @@
         }
       ]
     },
-    "prioritize": {
+    "group": {
       "type": "SEQ",
       "members": [
         {
@@ -737,7 +737,7 @@
         }
       ]
     },
-    "name": {
+    "identifier": {
       "type": "PATTERN",
       "value": "\\w+"
     }

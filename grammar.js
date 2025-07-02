@@ -16,7 +16,10 @@ module.exports = grammar({
     },
 
     statement: ($) => {
-      return seq(optional(seq($._definition, $._as)), $._expression);
+      return seq(
+        optional(seq($._definition, choice($.constant, $.variable))),
+        $._expression,
+      );
     },
 
     _definition: ($) => {
@@ -25,8 +28,6 @@ module.exports = grammar({
 
     constant: () => ":",
     variable: () => "=",
-
-    _as: ($) => choice($.constant, $.variable),
 
     _expression: ($) => {
       return choice(

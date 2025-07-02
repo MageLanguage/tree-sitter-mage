@@ -32,8 +32,17 @@
                   "name": "_definition"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_as"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "constant"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "variable"
+                    }
+                  ]
                 }
               ]
             },
@@ -68,19 +77,6 @@
     "variable": {
       "type": "STRING",
       "value": "="
-    },
-    "_as": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "constant"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "variable"
-        }
-      ]
     },
     "_expression": {
       "type": "CHOICE",

@@ -44,6 +44,10 @@
           "named": true
         },
         {
+          "type": "unary",
+          "named": true
+        },
+        {
           "type": "zero",
           "named": true
         }
@@ -131,6 +135,10 @@
         },
         {
           "type": "substract",
+          "named": true
+        },
+        {
+          "type": "unary",
           "named": true
         },
         {
@@ -224,7 +232,74 @@
           "named": true
         },
         {
+          "type": "unary",
+          "named": true
+        },
+        {
           "type": "variable",
+          "named": true
+        },
+        {
+          "type": "zero",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "unary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "add",
+          "named": true
+        },
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "call",
+          "named": true
+        },
+        {
+          "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        },
+        {
+          "type": "math",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "substract",
+          "named": true
+        },
+        {
+          "type": "unary",
           "named": true
         },
         {

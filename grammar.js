@@ -29,7 +29,7 @@ module.exports = grammar({
     _as: ($) => choice($.constant, $.variable),
 
     _expression: ($) => {
-      return choice($._string, $._number, $.math, $.call, $.name);
+      return choice($._string, $._number, $.unary, $.math, $.call, $.name);
     },
 
     escape: () =>
@@ -105,58 +105,15 @@ module.exports = grammar({
     _arithmetic: ($) => {
       return choice($.add, $.substract, $.multiply, $.divide, $.modulo);
     },
+
     math: ($) => {
-      return prec.left(1, seq($._expression, $._arithmetic, $._expression));
+      return prec.right(1, seq($._expression, $._arithmetic, $._expression));
+    },
+
+    unary: ($) => {
+      return prec.right(1, seq(choice($.add, $.substract), $._expression));
     },
 
     name: () => /\w+/,
-
-    // expression_section_start: ($) => {
-    //   return seq(repeat($.arithmetic), $.variable);
-    // },
-
-    // expression_section: ($) => {
-    //   return seq(repeat1($.arithmetic), $.variable);
-    // },
-
-    // number: ($) => {
-    //   return choice($.zero, $.binary, $.octal, $.decimal, $.hex);
-    // },
-
-    // identifier_chain: ($) => {
-    //   return seq($.identifier, repeat(seq(".", $.identifier)));
-    // },
-
-    // identifier: ($) => {
-    //   return choice($.call, $.name);
-    // },
-
-    // expression_call: ($) => {
-    //   return seq($.name, $.expression_call_argument_list);
-    // },
-
-    // expression_call_argument_list: ($) => {
-    //   return seq(
-    //     "(",
-    //     optional(
-    //       seq($.expression, repeat(seq(";", $.expression)), optional(";")),
-    //     ),
-    //     ")",
-    //   );
-    // },
-
-    // expresiion_math: ($) => {
-    //   return seq($.expression);
-    // },
-
-    // arithmetic: () => choice("+", "-", "*", "/", "%"),
-
-    // variable: ($) =>
-    //   choice($.prioritize, $.identifier_chain, $.number, $.string, $.source),
-
-    // definition_operation: () => choice(":", "="),
-    // definition: ($) => seq($.identifier_chain, $.definition_operation),
-
-    // prioritize: ($) => seq("[", $.expression, "]"),
   },
 });

@@ -95,6 +95,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "unary"
+        },
+        {
+          "type": "SYMBOL",
           "name": "math"
         },
         {
@@ -404,7 +408,7 @@
       ]
     },
     "math": {
-      "type": "PREC_LEFT",
+      "type": "PREC_RIGHT",
       "value": 1,
       "content": {
         "type": "SEQ",
@@ -416,6 +420,32 @@
           {
             "type": "SYMBOL",
             "name": "_arithmetic"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
+        ]
+      }
+    },
+    "unary": {
+      "type": "PREC_RIGHT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "add"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "substract"
+              }
+            ]
           },
           {
             "type": "SYMBOL",

@@ -13,10 +13,20 @@ module.exports = grammar({
   rules: {
     source_file: ($) => repeat(seq($.statement, ";")),
 
+    source: ($) => {
+      return seq(
+        "{",
+        repeat(seq($.statement, ";")),
+        optional($.statement),
+        "}",
+      );
+    },
+
     statement: ($) => $._expression,
 
     _expression: ($) => {
       return choice(
+        $.source,
         $.parenthesize,
         $.multiplicative,
         $.additive,

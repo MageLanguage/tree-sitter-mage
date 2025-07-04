@@ -19,52 +19,8 @@
       }
     },
     "statement": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_assignable"
-                },
-                {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "constant"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "variable"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_expression"
-        }
-      ]
-    },
-    "_assignable": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        }
-      ]
+      "type": "SYMBOL",
+      "name": "_expression"
     },
     "_expression": {
       "type": "CHOICE",
@@ -88,6 +44,10 @@
         {
           "type": "SYMBOL",
           "name": "logical"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "assign"
         },
         {
           "type": "SYMBOL",
@@ -406,6 +366,54 @@
       "type": "STRING",
       "value": "||"
     },
+    "assign": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "assign_constant"
+                },
+                "named": true,
+                "value": "constant"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "assign_variable"
+                },
+                "named": true,
+                "value": "variable"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
+        ]
+      }
+    },
+    "assign_constant": {
+      "type": "STRING",
+      "value": ":"
+    },
+    "assign_variable": {
+      "type": "STRING",
+      "value": "="
+    },
     "_number": {
       "type": "CHOICE",
       "members": [
@@ -511,14 +519,6 @@
     "booleans_true": {
       "type": "STRING",
       "value": "true"
-    },
-    "constant": {
-      "type": "STRING",
-      "value": ":"
-    },
-    "variable": {
-      "type": "STRING",
-      "value": "="
     },
     "identifier": {
       "type": "PATTERN",

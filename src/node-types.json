@@ -16,6 +16,10 @@
           "named": true
         },
         {
+          "type": "assign",
+          "named": true
+        },
+        {
           "type": "binary",
           "named": true
         },
@@ -67,6 +71,77 @@
     }
   },
   {
+    "type": "assign",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "additive",
+          "named": true
+        },
+        {
+          "type": "assign",
+          "named": true
+        },
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "booleans",
+          "named": true
+        },
+        {
+          "type": "comparison",
+          "named": true
+        },
+        {
+          "type": "constant",
+          "named": true
+        },
+        {
+          "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "logical",
+          "named": true
+        },
+        {
+          "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "numbers",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "booleans",
     "named": true,
     "fields": {},
@@ -95,6 +170,10 @@
       "types": [
         {
           "type": "additive",
+          "named": true
+        },
+        {
+          "type": "assign",
           "named": true
         },
         {
@@ -185,6 +264,10 @@
           "named": true
         },
         {
+          "type": "assign",
+          "named": true
+        },
+        {
           "type": "binary",
           "named": true
         },
@@ -245,6 +328,10 @@
       "types": [
         {
           "type": "additive",
+          "named": true
+        },
+        {
+          "type": "assign",
           "named": true
         },
         {
@@ -334,6 +421,10 @@
           "named": true
         },
         {
+          "type": "assign",
+          "named": true
+        },
+        {
           "type": "binary",
           "named": true
         },
@@ -401,11 +492,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
           "type": "additive",
+          "named": true
+        },
+        {
+          "type": "assign",
           "named": true
         },
         {
@@ -418,10 +513,6 @@
         },
         {
           "type": "comparison",
-          "named": true
-        },
-        {
-          "type": "constant",
           "named": true
         },
         {
@@ -454,10 +545,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "variable",
           "named": true
         }
       ]

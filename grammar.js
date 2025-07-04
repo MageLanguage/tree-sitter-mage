@@ -13,16 +13,7 @@ module.exports = grammar({
   rules: {
     source_file: ($) => repeat(seq($.statement, ";")),
 
-    statement: ($) => {
-      return seq(
-        optional(seq($._assignable, choice($.constant, $.variable))),
-        $._expression,
-      );
-    },
-
-    _assignable: ($) => {
-      return choice($.identifier);
-    },
+    statement: ($) => $._expression,
 
     _expression: ($) => {
       return choice(
@@ -31,6 +22,7 @@ module.exports = grammar({
         $.additive,
         $.comparison,
         $.logical,
+        $.assign,
         $.identifier,
         $._number,
         $.numbers,
@@ -119,6 +111,23 @@ module.exports = grammar({
     operator_and: () => "&&",
     operator_or: () => "||",
 
+    assign: ($) => {
+      return prec.right(
+        0,
+        seq(
+          $._expression,
+          choice(
+            alias($.assign_constant, $.constant),
+            alias($.assign_variable, $.variable),
+          ),
+          $._expression,
+        ),
+      );
+    },
+
+    assign_constant: () => ":",
+    assign_variable: () => "=",
+
     _number: ($) => {
       return choice(
         alias($.number_binary, $.binary),
@@ -148,9 +157,6 @@ module.exports = grammar({
 
     booleans_false: () => "false",
     booleans_true: () => "true",
-
-    constant: () => ":",
-    variable: () => "=",
 
     identifier: () => /\w+/,
   },

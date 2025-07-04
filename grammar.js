@@ -11,46 +11,147 @@ module.exports = grammar({
   name: "mage",
 
   rules: {
-    source_file: ($) => optional($.statement_chain),
-    source: ($) => seq("{", optional($.statement_chain), "}"),
+    source_file: ($) => repeat(seq($.statement, ";")),
 
-    string: () => /"[^"]*"/,
+    statement: ($) => {
+      return seq(
+        optional(seq($._assignable, choice($.constant, $.variable))),
+        $._expression,
+      );
+    },
 
-    zero: () => "0",
-    binary: () => /0[Bb][0-1]+/,
-    octal: () => /0[Oo][0-7]+/,
-    decimal: () => /0[Dd][0-9]+/,
-    hex: () => /0[Xx][0-9A-Fa-f]+/,
+    _assignable: ($) => {
+      return choice($.identifier);
+    },
 
-    number: ($) => choice($.zero, $.binary, $.octal, $.decimal, $.hex),
-
-    name: () => /\w+/,
-    call: ($) =>
-      seq(
+    _expression: ($) => {
+      return choice(
+        $.parenthesize,
+        $.multiplicative,
+        $.additive,
+        $.comparison,
+        $.logical,
         $.identifier,
-        "(",
-        optional(seq($.expression, repeat(seq(",", $.expression)))),
-        ")",
-      ),
+        $._number,
+        $.numbers,
+        $.booleans,
+      );
+    },
 
-    identifier_chain: ($) => seq($.identifier, repeat(seq(".", $.identifier))),
-    identifier: ($) => choice($.name, $.call),
+    parenthesize: ($) => {
+      return seq("(", $._expression, ")");
+    },
 
-    arithmetic: () => choice("+", "-", "*", "/", "%"),
+    multiplicative: ($) => {
+      return prec.left(
+        5,
+        seq(
+          $._expression,
+          choice(
+            alias($.operator_multiply, $.multiply),
+            alias($.operator_divide, $.divide),
+            alias($.operator_modulo, $.modulo),
+          ),
+          $._expression,
+        ),
+      );
+    },
 
-    variable: ($) =>
-      choice($.prioritize, $.identifier_chain, $.number, $.string, $.source),
+    operator_multiply: () => "*",
+    operator_divide: () => "/",
+    operator_modulo: () => "%",
 
-    definition_operation: () => choice(":", "="),
-    definition: ($) => seq($.identifier_chain, $.definition_operation),
+    additive: ($) => {
+      return prec.left(
+        4,
+        seq(
+          optional($._expression),
+          choice(
+            alias($.operator_add, $.add),
+            alias($.operator_subtract, $.subtract),
+          ),
+          $._expression,
+        ),
+      );
+    },
 
-    prioritize: ($) => seq("[", $.expression, "]"),
+    operator_add: () => "+",
+    operator_subtract: () => "-",
 
-    expression_section: ($) => seq(repeat($.arithmetic), $.variable),
-    expression: ($) => seq($.expression_section, repeat($.expression_section)),
+    comparison: ($) => {
+      return prec.left(
+        3,
+        seq(
+          $._expression,
+          choice(
+            alias($.operator_equal, $.equal),
+            alias($.operator_not_equal, $.not_equal),
+            alias($.operator_less_than, $.less_than),
+            alias($.operator_greater_than, $.greater_than),
+            alias($.operator_less_equal, $.less_equal),
+            alias($.operator_greater_equal, $.greater_equal),
+          ),
+          $._expression,
+        ),
+      );
+    },
 
-    statement_chain: ($) =>
-      seq($.statement, repeat(seq(";", $.statement)), optional(";")),
-    statement: ($) => seq(repeat($.definition), $.expression),
+    operator_equal: () => "==",
+    operator_not_equal: () => "!=",
+    operator_less_than: () => "<",
+    operator_greater_than: () => ">",
+    operator_less_equal: () => "<=",
+    operator_greater_equal: () => ">=",
+
+    logical: ($) => {
+      return choice(
+        prec.left(
+          2,
+          seq($._expression, alias($.operator_and, $.and), $._expression),
+        ),
+        prec.left(
+          1,
+          seq($._expression, alias($.operator_or, $.or), $._expression),
+        ),
+      );
+    },
+
+    operator_and: () => "&&",
+    operator_or: () => "||",
+
+    _number: ($) => {
+      return choice(
+        alias($.number_binary, $.binary),
+        alias($.number_octal, $.octal),
+        alias($.number_decimal, $.decimal),
+        alias($.number_hex, $.hex),
+      );
+    },
+
+    number_binary: () => /0[Bb][0-1]+/,
+    number_octal: () => /0[Oo][0-7]+/,
+    number_decimal: () => /0[Dd][0-9]+/,
+    number_hex: () => /0[Xx][0-9A-Fa-f]+/,
+
+    numbers: ($) => {
+      return choice(alias($.numbers_zero, $.zero));
+    },
+
+    numbers_zero: () => /0/,
+
+    booleans: ($) => {
+      return choice(
+        alias($.booleans_false, $.false),
+        alias($.booleans_true, $.true),
+      );
+    },
+
+    booleans_false: () => "false",
+    booleans_true: () => "true",
+
+    constant: () => ":",
+    variable: () => "=",
+
+    identifier: () => /\w+/,
   },
 });

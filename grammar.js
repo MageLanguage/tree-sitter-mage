@@ -35,6 +35,7 @@ module.exports = grammar({
         $.assign,
         $.identifier,
         $._number,
+        $._string,
         $.numbers,
         $.booleans,
       );
@@ -151,6 +152,58 @@ module.exports = grammar({
     number_octal: () => /0[Oo][0-7]+/,
     number_decimal: () => /0[Dd][0-9]+/,
     number_hex: () => /0[Xx][0-9A-Fa-f]+/,
+
+    escape: () =>
+      token.immediate(
+        seq(
+          "\\",
+          choice(
+            /[^xu0-7]/,
+            /[0-7]{1,3}/,
+            /x[0-9a-fA-F]{2}/,
+            /u[0-9a-fA-F]{4}/,
+            /u\{[0-9a-fA-F]+\}/,
+            /[\r?][\n\u2028\u2029]/,
+          ),
+        ),
+      ),
+
+    string_single_quoted_unescaped_string: () =>
+      token.immediate(prec(1, /[^'\\\r\n]+/)),
+    string_double_quoted_unescaped_string: () =>
+      token.immediate(prec(1, /[^"\\\r\n]+/)),
+
+    string_single_quoted: ($) => {
+      return seq(
+        "'",
+        repeat(
+          choice(
+            alias($.string_single_quoted_unescaped_string, $.string),
+            $.escape,
+          ),
+        ),
+        "'",
+      );
+    },
+    string_double_quoted: ($) => {
+      return seq(
+        '"',
+        repeat(
+          choice(
+            alias($.string_double_quoted_unescaped_string, $.string),
+            $.escape,
+          ),
+        ),
+        '"',
+      );
+    },
+
+    _string: ($) => {
+      return choice(
+        alias($.string_single_quoted, $.single_quoted),
+        alias($.string_double_quoted, $.double_quoted),
+      );
+    },
 
     numbers: ($) => {
       return choice(alias($.numbers_zero, $.zero));

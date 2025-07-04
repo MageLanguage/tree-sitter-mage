@@ -36,6 +36,10 @@
           "named": true
         },
         {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -61,6 +65,10 @@
         },
         {
           "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
           "named": true
         },
         {
@@ -111,6 +119,10 @@
           "named": true
         },
         {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -136,6 +148,10 @@
         },
         {
           "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
           "named": true
         },
         {
@@ -201,6 +217,10 @@
           "named": true
         },
         {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
           "type": "equal",
           "named": true
         },
@@ -253,7 +273,30 @@
           "named": true
         },
         {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
           "type": "source",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "double_quoted",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -296,6 +339,10 @@
           "named": true
         },
         {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -325,6 +372,10 @@
         },
         {
           "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
           "named": true
         },
         {
@@ -371,6 +422,10 @@
           "named": true
         },
         {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -404,6 +459,10 @@
         },
         {
           "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
           "named": true
         },
         {
@@ -461,6 +520,10 @@
           "named": true
         },
         {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -489,7 +552,30 @@
           "named": true
         },
         {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
           "type": "source",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "single_quoted",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         }
       ]
@@ -559,6 +645,10 @@
           "named": true
         },
         {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
           "type": "hex",
           "named": true
         },
@@ -587,11 +677,23 @@
           "named": true
         },
         {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
           "type": "source",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "'",
+    "named": false
   },
   {
     "type": "(",
@@ -631,6 +733,10 @@
   },
   {
     "type": "equal",
+    "named": true
+  },
+  {
+    "type": "escape",
     "named": true
   },
   {
@@ -679,6 +785,10 @@
   },
   {
     "type": "or",
+    "named": true
+  },
+  {
+    "type": "string",
     "named": true
   },
   {

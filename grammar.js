@@ -34,8 +34,6 @@ module.exports = grammar({
         $.assign,
         $._number,
         $._string,
-        $.numbers,
-        $.booleans,
         $.identifier,
       );
     },
@@ -221,22 +219,6 @@ module.exports = grammar({
         alias($.string_double_quoted, $.double_quoted),
       );
     },
-
-    numbers: ($) => {
-      return choice(alias($.numbers_zero, $.zero));
-    },
-
-    numbers_zero: () => /0/,
-
-    booleans: ($) => {
-      return choice(
-        alias($.booleans_false, $.false),
-        alias($.booleans_true, $.true),
-      );
-    },
-
-    booleans_false: () => "false",
-    booleans_true: () => "true",
 
     identifier: () => /\w+/,
   },

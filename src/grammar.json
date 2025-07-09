@@ -103,14 +103,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "numbers"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "booleans"
-        },
-        {
-          "type": "SYMBOL",
           "name": "identifier"
         }
       ]
@@ -733,55 +725,6 @@
           "value": "double_quoted"
         }
       ]
-    },
-    "numbers": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "numbers_zero"
-          },
-          "named": true,
-          "value": "zero"
-        }
-      ]
-    },
-    "numbers_zero": {
-      "type": "PATTERN",
-      "value": "0"
-    },
-    "booleans": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "booleans_false"
-          },
-          "named": true,
-          "value": "false"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "booleans_true"
-          },
-          "named": true,
-          "value": "true"
-        }
-      ]
-    },
-    "booleans_false": {
-      "type": "STRING",
-      "value": "false"
-    },
-    "booleans_true": {
-      "type": "STRING",
-      "value": "true"
     },
     "identifier": {
       "type": "PATTERN",

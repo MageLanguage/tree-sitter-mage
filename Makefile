@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-mage
 HOMEPAGE_URL := https://github.com/MageLanguage/tree-sitter-mage
-VERSION := 0.0.9
+VERSION := 0.1.0
 
 # repository
 SRC_DIR := src

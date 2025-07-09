@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-mage
-        VERSION "0.0.8"
+        VERSION "0.0.9"
         DESCRIPTION "Mage grammar for tree-sitter"
         HOMEPAGE_URL "https://github.com/MageLanguage/tree-sitter-mage"
         LANGUAGES C)

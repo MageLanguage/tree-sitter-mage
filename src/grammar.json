@@ -145,39 +145,9 @@
       "type": "STRING",
       "value": "."
     },
-    "call": {
-      "type": "PREC_LEFT",
-      "value": 6,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_expression"
-          },
-          {
-            "type": "ALIAS",
-            "content": {
-              "type": "SYMBOL",
-              "name": "operator_pipe"
-            },
-            "named": true,
-            "value": "pipe"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
-        ]
-      }
-    },
-    "operator_pipe": {
-      "type": "STRING",
-      "value": "=>"
-    },
     "multiplicative": {
       "type": "PREC_LEFT",
-      "value": 5,
+      "value": 6,
       "content": {
         "type": "SEQ",
         "members": [
@@ -238,7 +208,7 @@
     },
     "additive": {
       "type": "PREC_LEFT",
-      "value": 4,
+      "value": 5,
       "content": {
         "type": "SEQ",
         "members": [
@@ -294,7 +264,7 @@
     },
     "comparison": {
       "type": "PREC_LEFT",
-      "value": 3,
+      "value": 4,
       "content": {
         "type": "SEQ",
         "members": [
@@ -397,7 +367,7 @@
       "members": [
         {
           "type": "PREC_LEFT",
-          "value": 2,
+          "value": 3,
           "content": {
             "type": "SEQ",
             "members": [
@@ -423,7 +393,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": 2,
           "content": {
             "type": "SEQ",
             "members": [
@@ -456,6 +426,36 @@
     "operator_or": {
       "type": "STRING",
       "value": "||"
+    },
+    "call": {
+      "type": "PREC_RIGHT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          },
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "operator_pipe"
+            },
+            "named": true,
+            "value": "pipe"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
+        ]
+      }
+    },
+    "operator_pipe": {
+      "type": "STRING",
+      "value": "=>"
     },
     "assign": {
       "type": "PREC_RIGHT",

@@ -51,18 +51,9 @@ module.exports = grammar({
 
     operator_extract: () => ".",
 
-    call: ($) => {
-      return prec.left(
-        6,
-        seq($._expression, alias($.operator_pipe, $.pipe), $._expression),
-      );
-    },
-
-    operator_pipe: () => "=>",
-
     multiplicative: ($) => {
       return prec.left(
-        5,
+        6,
         seq(
           $._expression,
           choice(
@@ -81,7 +72,7 @@ module.exports = grammar({
 
     additive: ($) => {
       return prec.left(
-        4,
+        5,
         seq(
           optional($._expression),
           choice(
@@ -98,7 +89,7 @@ module.exports = grammar({
 
     comparison: ($) => {
       return prec.left(
-        3,
+        4,
         seq(
           $._expression,
           choice(
@@ -124,11 +115,11 @@ module.exports = grammar({
     logical: ($) => {
       return choice(
         prec.left(
-          2,
+          3,
           seq($._expression, alias($.operator_and, $.and), $._expression),
         ),
         prec.left(
-          1,
+          2,
           seq($._expression, alias($.operator_or, $.or), $._expression),
         ),
       );
@@ -136,6 +127,15 @@ module.exports = grammar({
 
     operator_and: () => "&&",
     operator_or: () => "||",
+
+    call: ($) => {
+      return prec.right(
+        1,
+        seq($._expression, alias($.operator_pipe, $.pipe), $._expression),
+      );
+    },
+
+    operator_pipe: () => "=>",
 
     assign: ($) => {
       return prec.right(

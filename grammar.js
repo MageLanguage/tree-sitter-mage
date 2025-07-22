@@ -129,7 +129,7 @@ module.exports = grammar({
     operator_or: () => "||",
 
     call: ($) => {
-      return prec.right(
+      return prec.left(
         1,
         seq($._expression, alias($.operator_pipe, $.pipe), $._expression),
       );

@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-mage",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Mage grammar for tree-sitter",
   "repository": "https://github.com/MageLanguage/tree-sitter-mage",
   "license": "MIT",

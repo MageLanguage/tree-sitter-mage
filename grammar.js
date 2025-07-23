@@ -18,7 +18,7 @@ module.exports = grammar({
     },
 
     parenthesize: ($) => {
-      return seq("(", optional($._expression), ")");
+      return seq("(", $._expression, ")");
     },
 
     _expression: ($) => {
@@ -91,7 +91,7 @@ module.exports = grammar({
       return prec.left(
         4,
         seq(
-          $._expression,
+          optional($._expression),
           choice(
             alias($.operator_equal, $.equal),
             alias($.operator_not_equal, $.not_equal),
@@ -131,7 +131,11 @@ module.exports = grammar({
     call: ($) => {
       return prec.left(
         1,
-        seq($._expression, alias($.operator_pipe, $.pipe), $._expression),
+        seq(
+          optional($._expression),
+          alias($.operator_pipe, $.pipe),
+          $._expression,
+        ),
       );
     },
 

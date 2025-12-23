@@ -1,0 +1,47 @@
+==================
+Multiply
+==================
+
+() * ()
+
+---
+
+(source_file
+    (multiplicative
+        (parenthesize)
+        (multiply)
+        (parenthesize)
+    )
+)
+
+==================
+Divide
+==================
+
+() / ()
+
+---
+
+(source_file
+    (multiplicative
+        (parenthesize)
+        (divide)
+        (parenthesize)
+    )
+)
+
+==================
+Modulo
+==================
+
+() % ()
+
+---
+
+(source_file
+    (multiplicative
+        (parenthesize)
+        (modulo)
+        (parenthesize)
+    )
+)

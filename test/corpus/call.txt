@@ -1,0 +1,15 @@
+==================
+Call
+==================
+
+() => ()
+
+---
+
+(source_file
+    (call
+        (parenthesize)
+        (pipe)
+        (parenthesize)
+    )
+)

@@ -1,0 +1,95 @@
+==================
+Equal
+==================
+
+() == ()
+
+---
+
+(source_file
+    (comparison
+        (parenthesize)
+        (equal)
+        (parenthesize)
+    )
+)
+
+==================
+Not equal
+==================
+
+() != ()
+
+---
+
+(source_file
+    (comparison
+        (parenthesize)
+        (not_equal)
+        (parenthesize)
+    )
+)
+
+==================
+Less than
+==================
+
+() < ()
+
+---
+
+(source_file
+    (comparison
+        (parenthesize)
+        (less_than)
+        (parenthesize)
+    )
+)
+
+==================
+Greater than
+==================
+
+() > ()
+
+---
+
+(source_file
+    (comparison
+        (parenthesize)
+        (greater_than)
+        (parenthesize)
+    )
+)
+
+==================
+Less equal
+==================
+
+() <= ()
+
+---
+
+(source_file
+    (comparison
+        (parenthesize)
+        (less_equal)
+        (parenthesize)
+    )
+)
+
+==================
+Greater equal
+==================
+
+() >= ()
+
+---
+
+(source_file
+    (comparison
+        (parenthesize)
+        (greater_equal)
+        (parenthesize)
+    )
+)

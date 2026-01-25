@@ -349,7 +349,7 @@
               "value": "<"
             },
             "named": true,
-            "value": "less"
+            "value": "less_than_sign"
           },
           {
             "type": "SYMBOL",
@@ -375,7 +375,7 @@
               "value": ">"
             },
             "named": true,
-            "value": "greater"
+            "value": "greater_than_sign"
           },
           {
             "type": "SYMBOL",
@@ -401,7 +401,7 @@
               "value": "<="
             },
             "named": true,
-            "value": "less_or_equal"
+            "value": "less_than_or_equal_sign"
           },
           {
             "type": "SYMBOL",
@@ -427,7 +427,7 @@
               "value": ">="
             },
             "named": true,
-            "value": "greater_or_equal"
+            "value": "greater_than_or_equal_sign"
           },
           {
             "type": "SYMBOL",
@@ -522,7 +522,7 @@
               "value": "+"
             },
             "named": true,
-            "value": "add"
+            "value": "addition"
           },
           {
             "type": "SYMBOL",
@@ -548,7 +548,7 @@
               "value": "-"
             },
             "named": true,
-            "value": "subtract"
+            "value": "subtraction"
           },
           {
             "type": "SYMBOL",
@@ -566,7 +566,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "division"
+          "name": "divisive"
         },
         {
           "type": "SYMBOL",
@@ -595,7 +595,7 @@
               "value": "*"
             },
             "named": true,
-            "value": "multiply"
+            "value": "multiplication"
           },
           {
             "type": "SYMBOL",
@@ -604,7 +604,7 @@
         ]
       }
     },
-    "division": {
+    "divisive": {
       "type": "PREC_LEFT",
       "value": 6,
       "content": {
@@ -621,7 +621,7 @@
               "value": "/"
             },
             "named": true,
-            "value": "divide"
+            "value": "division"
           },
           {
             "type": "SYMBOL",
@@ -647,7 +647,7 @@
               "value": "%"
             },
             "named": true,
-            "value": "mod"
+            "value": "modulus"
           },
           {
             "type": "SYMBOL",
@@ -788,19 +788,19 @@
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "number_hex"
+            "name": "number_hexadecimal"
           },
           "named": true,
-          "value": "hex"
+          "value": "hexadecimal"
         },
         {
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "number_plain"
+            "name": "number_integer"
           },
           "named": true,
-          "value": "plain"
+          "value": "integer"
         }
       ]
     },
@@ -816,11 +816,11 @@
       "type": "PATTERN",
       "value": "0[Dd][0-9]+"
     },
-    "number_hex": {
+    "number_hexadecimal": {
       "type": "PATTERN",
       "value": "0[Xx][0-9A-Fa-f]+"
     },
-    "number_plain": {
+    "number_integer": {
       "type": "PATTERN",
       "value": "[0-9]+"
     },

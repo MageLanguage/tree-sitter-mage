@@ -9,7 +9,7 @@ Addition
 (source_file
     (additive
         (decimal)
-        (add)
+        (addition)
         (decimal)))
 
 ==================
@@ -23,7 +23,7 @@ Subtraction
 (source_file
     (subtractive
         (decimal)
-        (subtract)
+        (subtraction)
         (decimal)))
 
 ==================
@@ -38,9 +38,9 @@ Chained addition
     (additive
         (additive
             (decimal)
-            (add)
+            (addition)
             (decimal))
-        (add)
+        (addition)
         (decimal)))
 
 ==================
@@ -55,7 +55,7 @@ Mixed operations
     (subtractive
         (additive
             (decimal)
-            (add)
+            (addition)
             (decimal))
-        (subtract)
+        (subtraction)
         (decimal)))

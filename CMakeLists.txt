@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-mage
-        VERSION "0.2.1"
+        VERSION "0.2.2"
         DESCRIPTION "Mage grammar for tree-sitter"
         HOMEPAGE_URL "https://github.com/magelanguage/tree-sitter-mage"
         LANGUAGES C)
@@ -38,7 +38,7 @@ add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/src/parser.c"
 
 add_library(tree-sitter-mage src/parser.c)
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/scanner.c)
-  target_sources(tree-sitter-mage PRIVATE src/scanner.c)
+    target_sources(tree-sitter-mage PRIVATE src/scanner.c)
 endif()
 target_include_directories(tree-sitter-mage
                            PRIVATE src

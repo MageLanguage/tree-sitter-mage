@@ -40,7 +40,7 @@ Hex number
 ---
 
 (source_file
-    (hex))
+    (hexadecimal))
 
 ==================
 Plain number
@@ -51,4 +51,4 @@ Plain number
 ---
 
 (source_file
-    (plain))
+    (integer))

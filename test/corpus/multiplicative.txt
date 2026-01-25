@@ -9,7 +9,7 @@ Multiplication
 (source_file
     (multiplicative
         (decimal)
-        (multiply)
+        (multiplication)
         (decimal)))
 
 ==================
@@ -21,9 +21,9 @@ Division
 ---
 
 (source_file
-    (division
+    (divisive
         (decimal)
-        (divide)
+        (division)
         (decimal)))
 
 ==================
@@ -37,7 +37,7 @@ Modulo
 (source_file
     (modulo
         (decimal)
-        (mod)
+        (modulus)
         (decimal)))
 
 ==================
@@ -51,8 +51,8 @@ Precedence with addition
 (source_file
     (additive
         (decimal)
-        (add)
+        (addition)
         (multiplicative
             (decimal)
-            (multiply)
+            (multiplication)
             (decimal))))

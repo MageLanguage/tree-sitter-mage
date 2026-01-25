@@ -8,7 +8,7 @@
       "required": true,
       "types": [
         {
-          "type": "add",
+          "type": "addition",
           "named": true
         },
         {
@@ -24,7 +24,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -32,11 +32,15 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -61,10 +65,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -107,7 +107,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -127,11 +127,15 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -168,10 +172,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -276,7 +276,7 @@
             "named": true
           },
           {
-            "type": "division",
+            "type": "divisive",
             "named": true
           },
           {
@@ -296,11 +296,15 @@
             "named": true
           },
           {
-            "type": "hex",
+            "type": "hexadecimal",
             "named": true
           },
           {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "integer",
             "named": true
           },
           {
@@ -340,10 +344,6 @@
             "named": true
           },
           {
-            "type": "plain",
-            "named": true
-          },
-          {
             "type": "single_quoted",
             "named": true
           },
@@ -370,7 +370,7 @@
     }
   },
   {
-    "type": "division",
+    "type": "divisive",
     "named": true,
     "fields": {},
     "children": {
@@ -386,11 +386,11 @@
           "named": true
         },
         {
-          "type": "divide",
+          "type": "division",
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -398,11 +398,15 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -427,10 +431,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -484,7 +484,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -496,11 +496,15 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -525,10 +529,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -567,7 +567,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -575,15 +575,19 @@
           "named": true
         },
         {
-          "type": "greater",
+          "type": "greater_than_sign",
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -608,10 +612,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -650,7 +650,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -658,15 +658,19 @@
           "named": true
         },
         {
-          "type": "greater_or_equal",
+          "type": "greater_than_or_equal_sign",
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -691,10 +695,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -752,7 +752,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -760,7 +760,7 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
@@ -768,7 +768,11 @@
           "named": true
         },
         {
-          "type": "less",
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "less_than_sign",
           "named": true
         },
         {
@@ -793,10 +797,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -835,7 +835,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -843,7 +843,7 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
@@ -851,7 +851,11 @@
           "named": true
         },
         {
-          "type": "less_or_equal",
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "less_than_or_equal_sign",
           "named": true
         },
         {
@@ -876,10 +880,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -954,7 +954,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -962,7 +962,7 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
@@ -970,15 +970,19 @@
           "named": true
         },
         {
+          "type": "integer",
+          "named": true
+        },
+        {
           "type": "member",
           "named": true
         },
         {
-          "type": "mod",
+          "type": "modulo",
           "named": true
         },
         {
-          "type": "modulo",
+          "type": "modulus",
           "named": true
         },
         {
@@ -995,10 +999,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -1029,7 +1029,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -1037,11 +1037,15 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -1053,11 +1057,11 @@
           "named": true
         },
         {
-          "type": "multiplicative",
+          "type": "multiplication",
           "named": true
         },
         {
-          "type": "multiply",
+          "type": "multiplicative",
           "named": true
         },
         {
@@ -1070,10 +1074,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -1108,7 +1108,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -1116,11 +1116,15 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -1149,10 +1153,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -1222,7 +1222,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -1242,11 +1242,15 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -1283,10 +1287,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -1356,7 +1356,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -1376,11 +1376,15 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -1417,10 +1421,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -1472,7 +1472,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -1492,11 +1492,15 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -1533,10 +1537,6 @@
         },
         {
           "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "plain",
           "named": true
         },
         {
@@ -1579,7 +1579,7 @@
           "named": true
         },
         {
-          "type": "division",
+          "type": "divisive",
           "named": true
         },
         {
@@ -1587,11 +1587,15 @@
           "named": true
         },
         {
-          "type": "hex",
+          "type": "hexadecimal",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
           "named": true
         },
         {
@@ -1619,10 +1623,6 @@
           "named": true
         },
         {
-          "type": "plain",
-          "named": true
-        },
-        {
           "type": "single_quoted",
           "named": true
         },
@@ -1631,7 +1631,7 @@
           "named": true
         },
         {
-          "type": "subtract",
+          "type": "subtraction",
           "named": true
         },
         {
@@ -1680,7 +1680,7 @@
             "named": true
           },
           {
-            "type": "division",
+            "type": "divisive",
             "named": true
           },
           {
@@ -1700,11 +1700,15 @@
             "named": true
           },
           {
-            "type": "hex",
+            "type": "hexadecimal",
             "named": true
           },
           {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "integer",
             "named": true
           },
           {
@@ -1741,10 +1745,6 @@
           },
           {
             "type": "parenthesize",
-            "named": true
-          },
-          {
-            "type": "plain",
             "named": true
           },
           {
@@ -1798,7 +1798,7 @@
     "named": false
   },
   {
-    "type": "add",
+    "type": "addition",
     "named": true
   },
   {
@@ -1814,7 +1814,7 @@
     "named": true
   },
   {
-    "type": "divide",
+    "type": "division",
     "named": true
   },
   {
@@ -1830,15 +1830,15 @@
     "named": true
   },
   {
-    "type": "greater",
+    "type": "greater_than_or_equal_sign",
     "named": true
   },
   {
-    "type": "greater_or_equal",
+    "type": "greater_than_sign",
     "named": true
   },
   {
-    "type": "hex",
+    "type": "hexadecimal",
     "named": true
   },
   {
@@ -1846,19 +1846,23 @@
     "named": true
   },
   {
-    "type": "less",
+    "type": "integer",
     "named": true
   },
   {
-    "type": "less_or_equal",
+    "type": "less_than_or_equal_sign",
     "named": true
   },
   {
-    "type": "mod",
+    "type": "less_than_sign",
     "named": true
   },
   {
-    "type": "multiply",
+    "type": "modulus",
+    "named": true
+  },
+  {
+    "type": "multiplication",
     "named": true
   },
   {
@@ -1874,15 +1878,11 @@
     "named": true
   },
   {
-    "type": "plain",
-    "named": true
-  },
-  {
     "type": "raw",
     "named": true
   },
   {
-    "type": "subtract",
+    "type": "subtraction",
     "named": true
   },
   {

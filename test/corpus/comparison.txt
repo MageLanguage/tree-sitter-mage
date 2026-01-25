@@ -37,7 +37,7 @@ Less than
 (source_file
     (less_than
         (decimal)
-        (less)
+        (less_than_sign)
         (decimal)))
 
 ==================
@@ -51,7 +51,7 @@ Greater than
 (source_file
     (greater_than
         (decimal)
-        (greater)
+        (greater_than_sign)
         (decimal)))
 
 ==================
@@ -65,7 +65,7 @@ Less than or equal
 (source_file
     (less_than_or_equal
         (decimal)
-        (less_or_equal)
+        (less_than_or_equal_sign)
         (decimal)))
 
 ==================
@@ -79,5 +79,5 @@ Greater than or equal
 (source_file
     (greater_than_or_equal
         (decimal)
-        (greater_or_equal)
+        (greater_than_or_equal_sign)
         (decimal)))

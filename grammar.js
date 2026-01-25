@@ -78,7 +78,7 @@ export default grammar({
         4,
         seq(
           $._arithmetic_expression,
-          alias("<", $.less),
+          alias("<", $.less_than_sign),
           $._arithmetic_expression,
         ),
       ),
@@ -88,7 +88,7 @@ export default grammar({
         4,
         seq(
           $._arithmetic_expression,
-          alias(">", $.greater),
+          alias(">", $.greater_than_sign),
           $._arithmetic_expression,
         ),
       ),
@@ -98,7 +98,7 @@ export default grammar({
         4,
         seq(
           $._arithmetic_expression,
-          alias("<=", $.less_or_equal),
+          alias("<=", $.less_than_or_equal_sign),
           $._arithmetic_expression,
         ),
       ),
@@ -108,7 +108,7 @@ export default grammar({
         4,
         seq(
           $._arithmetic_expression,
-          alias(">=", $.greater_or_equal),
+          alias(">=", $.greater_than_or_equal_sign),
           $._arithmetic_expression,
         ),
       ),
@@ -136,22 +136,26 @@ export default grammar({
     _arithmetic_expression: ($) => choice($.additive, $.subtractive, $._term),
 
     additive: ($) =>
-      prec.left(5, seq($._arithmetic_expression, alias("+", $.add), $._term)),
+      prec.left(
+        5,
+        seq($._arithmetic_expression, alias("+", $.addition), $._term),
+      ),
 
     subtractive: ($) =>
       prec.left(
         5,
-        seq($._arithmetic_expression, alias("-", $.subtract), $._term),
+        seq($._arithmetic_expression, alias("-", $.subtraction), $._term),
       ),
 
-    _term: ($) => choice($.multiplicative, $.division, $.modulo, $._atom),
+    _term: ($) => choice($.multiplicative, $.divisive, $.modulo, $._atom),
 
     multiplicative: ($) =>
-      prec.left(6, seq($._term, alias("*", $.multiply), $._atom)),
+      prec.left(6, seq($._term, alias("*", $.multiplication), $._atom)),
 
-    division: ($) => prec.left(6, seq($._term, alias("/", $.divide), $._atom)),
+    divisive: ($) =>
+      prec.left(6, seq($._term, alias("/", $.division), $._atom)),
 
-    modulo: ($) => prec.left(6, seq($._term, alias("%", $.mod), $._atom)),
+    modulo: ($) => prec.left(6, seq($._term, alias("%", $.modulus), $._atom)),
 
     _atom: ($) =>
       choice(
@@ -182,15 +186,15 @@ export default grammar({
         alias($.number_binary, $.binary),
         alias($.number_octal, $.octal),
         alias($.number_decimal, $.decimal),
-        alias($.number_hex, $.hex),
-        alias($.number_plain, $.plain),
+        alias($.number_hexadecimal, $.hexadecimal),
+        alias($.number_integer, $.integer),
       ),
 
     number_binary: () => /0[Bb][0-1]+/,
     number_octal: () => /0[Oo][0-7]+/,
     number_decimal: () => /0[Dd][0-9]+/,
-    number_hex: () => /0[Xx][0-9A-Fa-f]+/,
-    number_plain: () => /[0-9]+/,
+    number_hexadecimal: () => /0[Xx][0-9A-Fa-f]+/,
+    number_integer: () => /[0-9]+/,
 
     _string: ($) =>
       choice(

@@ -1,0 +1,48 @@
+==================
+Double quoted string
+==================
+
+"hello"
+
+---
+
+(source_file
+    (double_quoted
+        (raw)))
+
+==================
+Single quoted string
+==================
+
+'hello'
+
+---
+
+(source_file
+    (single_quoted
+        (raw)))
+
+==================
+String with escape
+==================
+
+"hello\nworld"
+
+---
+
+(source_file
+    (double_quoted
+        (raw)
+        (escape)
+        (raw)))
+
+==================
+Empty string
+==================
+
+""
+
+---
+
+(source_file
+    (double_quoted))

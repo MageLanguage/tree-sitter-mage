@@ -12,173 +12,193 @@ export default grammar({
 
   rules: {
     source_file: ($) =>
-      seq(repeat(seq($._expression, ";")), optional($._expression)),
+      seq(repeat(seq($._statement, ";")), optional($._statement)),
 
-    source: ($) => {
-      return seq(
-        "{",
-        repeat(seq($._expression, ";")),
-        optional($._expression),
-        "}",
-      );
-    },
+    source: ($) =>
+      seq("{", repeat(seq($._statement, ";")), optional($._statement), "}"),
 
-    parenthesize: ($) => {
-      return seq("(", $._expression, ")");
-    },
+    parenthesize: ($) => seq("(", $._statement, ")"),
 
-    _expression: ($) => {
-      return choice(
-        $.source,
-        $.parenthesize,
-        $.member,
-        $.call,
-        $.multiplicative,
-        $.additive,
-        $.comparison,
-        $.logical,
-        $.assign,
-        $._number,
-        $._string,
-        $.identifier,
-      );
-    },
+    _statement: ($) =>
+      choice($.constant_assignment, $.variable_assignment, $._pipe_expression),
 
-    member: ($) => {
-      return prec.left(
-        7,
+    constant_assignment: ($) =>
+      prec.right(
         seq(
-          optional($._expression),
-          alias($.operator_extract, $.extract),
-          $._expression,
+          field("name", $._member_expression),
+          alias(":", $.constant),
+          field("value", $._pipe_expression),
         ),
-      );
-    },
+      ),
 
-    operator_extract: () => ".",
-
-    multiplicative: ($) => {
-      return prec.left(
-        6,
+    variable_assignment: ($) =>
+      prec.right(
         seq(
-          $._expression,
-          choice(
-            alias($.operator_multiply, $.multiply),
-            alias($.operator_divide, $.divide),
-            alias($.operator_modulo, $.modulo),
-          ),
-          $._expression,
+          field("name", $._member_expression),
+          alias("=", $.variable),
+          field("value", $._pipe_expression),
         ),
-      );
-    },
+      ),
 
-    operator_multiply: () => "*",
-    operator_divide: () => "/",
-    operator_modulo: () => "%",
+    _pipe_expression: ($) => choice($.call, $._comparison_expression),
 
-    additive: ($) => {
-      return prec.left(
-        5,
+    call: ($) =>
+      prec.left(
         seq(
-          optional($._expression),
-          choice(
-            alias($.operator_add, $.add),
-            alias($.operator_subtract, $.subtract),
-          ),
-          $._expression,
+          field("arguments", alias($._argument_list, $.argument_list)),
+          alias("=>", $.pipe),
+          field("name", $._call_target),
         ),
-      );
-    },
+      ),
 
-    operator_add: () => "+",
-    operator_subtract: () => "-",
+    _call_target: ($) =>
+      choice($.implicit_member, $.parenthesize, $._member_expression),
 
-    comparison: ($) => {
-      return prec.left(
+    implicit_member: ($) => seq(alias(".", $.extract), $.identifier),
+
+    _argument_list: ($) =>
+      prec.left(
+        1,
+        seq($._pipe_expression, optional(seq(",", $._argument_list))),
+      ),
+
+    _comparison_expression: ($) =>
+      choice(
+        $.less_than,
+        $.greater_than,
+        $.less_than_or_equal,
+        $.greater_than_or_equal,
+        $.equal,
+        $.not_equal,
+        $._arithmetic_expression,
+      ),
+
+    less_than: ($) =>
+      prec.left(
         4,
         seq(
-          optional($._expression),
-          choice(
-            alias($.operator_equal, $.equal),
-            alias($.operator_not_equal, $.not_equal),
-            alias($.operator_less_than, $.less_than),
-            alias($.operator_greater_than, $.greater_than),
-            alias($.operator_less_equal, $.less_equal),
-            alias($.operator_greater_equal, $.greater_equal),
-          ),
-          $._expression,
+          $._arithmetic_expression,
+          alias("<", $.less),
+          $._arithmetic_expression,
         ),
-      );
-    },
+      ),
 
-    operator_equal: () => "==",
-    operator_not_equal: () => "!=",
-    operator_less_than: () => "<",
-    operator_greater_than: () => ">",
-    operator_less_equal: () => "<=",
-    operator_greater_equal: () => ">=",
-
-    logical: ($) => {
-      return choice(
-        prec.left(
-          3,
-          seq($._expression, alias($.operator_and, $.and), $._expression),
-        ),
-        prec.left(
-          2,
-          seq($._expression, alias($.operator_or, $.or), $._expression),
-        ),
-      );
-    },
-
-    operator_and: () => "&&",
-    operator_or: () => "||",
-
-    call: ($) => {
-      return prec.left(
-        1,
+    greater_than: ($) =>
+      prec.left(
+        4,
         seq(
-          optional($._expression),
-          alias($.operator_pipe, $.pipe),
-          $._expression,
+          $._arithmetic_expression,
+          alias(">", $.greater),
+          $._arithmetic_expression,
         ),
-      );
-    },
+      ),
 
-    operator_pipe: () => "=>",
-
-    assign: ($) => {
-      return prec.right(
-        0,
+    less_than_or_equal: ($) =>
+      prec.left(
+        4,
         seq(
-          $._expression,
-          choice(
-            alias($.operator_constant, $.constant),
-            alias($.operator_variable, $.variable),
-          ),
-          $._expression,
+          $._arithmetic_expression,
+          alias("<=", $.less_or_equal),
+          $._arithmetic_expression,
         ),
-      );
-    },
+      ),
 
-    operator_constant: () => ":",
-    operator_variable: () => "=",
+    greater_than_or_equal: ($) =>
+      prec.left(
+        4,
+        seq(
+          $._arithmetic_expression,
+          alias(">=", $.greater_or_equal),
+          $._arithmetic_expression,
+        ),
+      ),
 
-    _number: ($) => {
-      return choice(
+    equal: ($) =>
+      prec.left(
+        4,
+        seq(
+          $._arithmetic_expression,
+          alias("==", $.equal_sign),
+          $._arithmetic_expression,
+        ),
+      ),
+
+    not_equal: ($) =>
+      prec.left(
+        4,
+        seq(
+          $._arithmetic_expression,
+          alias("!=", $.not_equal_sign),
+          $._arithmetic_expression,
+        ),
+      ),
+
+    _arithmetic_expression: ($) => choice($.additive, $.subtractive, $._term),
+
+    additive: ($) =>
+      prec.left(5, seq($._arithmetic_expression, alias("+", $.add), $._term)),
+
+    subtractive: ($) =>
+      prec.left(
+        5,
+        seq($._arithmetic_expression, alias("-", $.subtract), $._term),
+      ),
+
+    _term: ($) => choice($.multiplicative, $.division, $.modulo, $._atom),
+
+    multiplicative: ($) =>
+      prec.left(6, seq($._term, alias("*", $.multiply), $._atom)),
+
+    division: ($) => prec.left(6, seq($._term, alias("/", $.divide), $._atom)),
+
+    modulo: ($) => prec.left(6, seq($._term, alias("%", $.mod), $._atom)),
+
+    _atom: ($) =>
+      choice(
+        $.parenthesize,
+        $.nullary_call,
+        $._member_expression,
+        $._number,
+        $._string,
+        prec(-1, $.source),
+      ),
+
+    nullary_call: ($) => seq(alias("=>", $.pipe), $._member_expression),
+
+    _member_expression: ($) => choice($.member, $.identifier),
+
+    member: ($) =>
+      prec.left(
+        7,
+        seq(
+          field("object", $._member_expression),
+          alias(".", $.extract),
+          field("property", $.identifier),
+        ),
+      ),
+
+    _number: ($) =>
+      choice(
         alias($.number_binary, $.binary),
         alias($.number_octal, $.octal),
         alias($.number_decimal, $.decimal),
         alias($.number_hex, $.hex),
-      );
-    },
+        alias($.number_plain, $.plain),
+      ),
 
     number_binary: () => /0[Bb][0-1]+/,
     number_octal: () => /0[Oo][0-7]+/,
     number_decimal: () => /0[Dd][0-9]+/,
     number_hex: () => /0[Xx][0-9A-Fa-f]+/,
+    number_plain: () => /[0-9]+/,
 
-    string_escape: () =>
+    _string: ($) =>
+      choice(
+        alias($.string_single_quoted, $.single_quoted),
+        alias($.string_double_quoted, $.double_quoted),
+      ),
+
+    _string_escape: () =>
       token.immediate(
         seq(
           "\\",
@@ -193,43 +213,33 @@ export default grammar({
         ),
       ),
 
-    string_single_quoted_unescaped_raw: () =>
-      token.immediate(prec(1, /[^'\\\r\n]+/)),
-    string_double_quoted_unescaped_raw: () =>
-      token.immediate(prec(1, /[^"\\\r\n]+/)),
+    _single_quoted_content: () => token.immediate(/[^'\\\r\n]+/),
+    _double_quoted_content: () => token.immediate(/[^"\\\r\n]+/),
 
-    string_single_quoted: ($) => {
-      return seq(
+    string_single_quoted: ($) =>
+      seq(
         "'",
         repeat(
           choice(
-            alias($.string_single_quoted_unescaped_raw, $.raw),
-            alias($.string_escape, $.escape),
+            alias($._single_quoted_content, $.raw),
+            alias($._string_escape, $.escape),
           ),
         ),
         "'",
-      );
-    },
-    string_double_quoted: ($) => {
-      return seq(
+      ),
+
+    string_double_quoted: ($) =>
+      seq(
         '"',
         repeat(
           choice(
-            alias($.string_double_quoted_unescaped_raw, $.raw),
-            alias($.string_escape, $.escape),
+            alias($._double_quoted_content, $.raw),
+            alias($._string_escape, $.escape),
           ),
         ),
         '"',
-      );
-    },
+      ),
 
-    _string: ($) => {
-      return choice(
-        alias($.string_single_quoted, $.single_quoted),
-        alias($.string_double_quoted, $.double_quoted),
-      );
-    },
-
-    identifier: () => /\w+/,
+    identifier: () => /[a-zA-Z_][a-zA-Z0-9_]*/,
   },
 });

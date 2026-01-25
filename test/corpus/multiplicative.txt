@@ -1,47 +1,58 @@
 ==================
-Multiply
+Multiplication
 ==================
 
-() * ()
+0d2 * 0d3
 
 ---
 
 (source_file
     (multiplicative
-        (parenthesize)
+        (decimal)
         (multiply)
-        (parenthesize)
-    )
-)
+        (decimal)))
 
 ==================
-Divide
+Division
 ==================
 
-() / ()
+0d6 / 0d2
 
 ---
 
 (source_file
-    (multiplicative
-        (parenthesize)
+    (division
+        (decimal)
         (divide)
-        (parenthesize)
-    )
-)
+        (decimal)))
 
 ==================
 Modulo
 ==================
 
-() % ()
+0d7 % 0d3
 
 ---
 
 (source_file
-    (multiplicative
-        (parenthesize)
-        (modulo)
-        (parenthesize)
-    )
-)
+    (modulo
+        (decimal)
+        (mod)
+        (decimal)))
+
+==================
+Precedence with addition
+==================
+
+0d1 + 0d2 * 0d3
+
+---
+
+(source_file
+    (additive
+        (decimal)
+        (add)
+        (multiplicative
+            (decimal)
+            (multiply)
+            (decimal))))

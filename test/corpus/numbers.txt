@@ -1,0 +1,54 @@
+==================
+Decimal number
+==================
+
+0d42
+
+---
+
+(source_file
+    (decimal))
+
+==================
+Binary number
+==================
+
+0b1010
+
+---
+
+(source_file
+    (binary))
+
+==================
+Octal number
+==================
+
+0o755
+
+---
+
+(source_file
+    (octal))
+
+==================
+Hex number
+==================
+
+0xFF
+
+---
+
+(source_file
+    (hex))
+
+==================
+Plain number
+==================
+
+42
+
+---
+
+(source_file
+    (plain))

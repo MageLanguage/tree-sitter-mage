@@ -1,31 +1,30 @@
 ==================
-And
+Member access
 ==================
 
-() && ()
+foo.bar
 
 ---
 
 (source_file
-    (logical
-        (parenthesize)
-        (and)
-        (parenthesize)
-    )
-)
+    (member
+        object: (identifier)
+        (extract)
+        property: (identifier)))
 
 ==================
-Or
+Chained member access
 ==================
 
-() || ()
+foo.bar.baz
 
 ---
 
 (source_file
-    (logical
-        (parenthesize)
-        (or)
-        (parenthesize)
-    )
-)
+    (member
+        object: (member
+            object: (identifier)
+            (extract)
+            property: (identifier))
+        (extract)
+        property: (identifier)))

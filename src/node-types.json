@@ -16,23 +16,15 @@
           "named": true
         },
         {
-          "type": "assign",
-          "named": true
-        },
-        {
           "type": "binary",
           "named": true
         },
         {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comparison",
-          "named": true
-        },
-        {
           "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "division",
           "named": true
         },
         {
@@ -48,15 +40,19 @@
           "named": true
         },
         {
-          "type": "logical",
-          "named": true
-        },
-        {
           "type": "member",
           "named": true
         },
         {
+          "type": "modulo",
+          "named": true
+        },
+        {
           "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
           "named": true
         },
         {
@@ -68,86 +64,7 @@
           "named": true
         },
         {
-          "type": "single_quoted",
-          "named": true
-        },
-        {
-          "type": "source",
-          "named": true
-        },
-        {
-          "type": "subtract",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "assign",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "additive",
-          "named": true
-        },
-        {
-          "type": "assign",
-          "named": true
-        },
-        {
-          "type": "binary",
-          "named": true
-        },
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comparison",
-          "named": true
-        },
-        {
-          "type": "constant",
-          "named": true
-        },
-        {
-          "type": "decimal",
-          "named": true
-        },
-        {
-          "type": "double_quoted",
-          "named": true
-        },
-        {
-          "type": "hex",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "logical",
-          "named": true
-        },
-        {
-          "type": "member",
-          "named": true
-        },
-        {
-          "type": "multiplicative",
-          "named": true
-        },
-        {
-          "type": "octal",
-          "named": true
-        },
-        {
-          "type": "parenthesize",
+          "type": "plain",
           "named": true
         },
         {
@@ -159,14 +76,14 @@
           "named": true
         },
         {
-          "type": "variable",
+          "type": "subtractive",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "call",
+    "type": "argument_list",
     "named": true,
     "fields": {},
     "children": {
@@ -178,10 +95,6 @@
           "named": true
         },
         {
-          "type": "assign",
-          "named": true
-        },
-        {
           "type": "binary",
           "named": true
         },
@@ -190,90 +103,11 @@
           "named": true
         },
         {
-          "type": "comparison",
-          "named": true
-        },
-        {
           "type": "decimal",
           "named": true
         },
         {
-          "type": "double_quoted",
-          "named": true
-        },
-        {
-          "type": "hex",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "logical",
-          "named": true
-        },
-        {
-          "type": "member",
-          "named": true
-        },
-        {
-          "type": "multiplicative",
-          "named": true
-        },
-        {
-          "type": "octal",
-          "named": true
-        },
-        {
-          "type": "parenthesize",
-          "named": true
-        },
-        {
-          "type": "pipe",
-          "named": true
-        },
-        {
-          "type": "single_quoted",
-          "named": true
-        },
-        {
-          "type": "source",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "comparison",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "additive",
-          "named": true
-        },
-        {
-          "type": "assign",
-          "named": true
-        },
-        {
-          "type": "binary",
-          "named": true
-        },
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comparison",
-          "named": true
-        },
-        {
-          "type": "decimal",
+          "type": "division",
           "named": true
         },
         {
@@ -285,11 +119,11 @@
           "named": true
         },
         {
-          "type": "greater_equal",
+          "type": "greater_than",
           "named": true
         },
         {
-          "type": "greater_than",
+          "type": "greater_than_or_equal",
           "named": true
         },
         {
@@ -301,19 +135,19 @@
           "named": true
         },
         {
-          "type": "less_equal",
-          "named": true
-        },
-        {
           "type": "less_than",
           "named": true
         },
         {
-          "type": "logical",
+          "type": "less_than_or_equal",
           "named": true
         },
         {
           "type": "member",
+          "named": true
+        },
+        {
+          "type": "modulo",
           "named": true
         },
         {
@@ -325,11 +159,278 @@
           "named": true
         },
         {
+          "type": "nullary_call",
+          "named": true
+        },
+        {
           "type": "octal",
           "named": true
         },
         {
           "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "plain",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "subtractive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "call",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "argument_list",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "implicit_member",
+            "named": true
+          },
+          {
+            "type": "member",
+            "named": true
+          },
+          {
+            "type": "parenthesize",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "pipe",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "constant_assignment",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "additive",
+            "named": true
+          },
+          {
+            "type": "binary",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "decimal",
+            "named": true
+          },
+          {
+            "type": "division",
+            "named": true
+          },
+          {
+            "type": "double_quoted",
+            "named": true
+          },
+          {
+            "type": "equal",
+            "named": true
+          },
+          {
+            "type": "greater_than",
+            "named": true
+          },
+          {
+            "type": "greater_than_or_equal",
+            "named": true
+          },
+          {
+            "type": "hex",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "less_than",
+            "named": true
+          },
+          {
+            "type": "less_than_or_equal",
+            "named": true
+          },
+          {
+            "type": "member",
+            "named": true
+          },
+          {
+            "type": "modulo",
+            "named": true
+          },
+          {
+            "type": "multiplicative",
+            "named": true
+          },
+          {
+            "type": "not_equal",
+            "named": true
+          },
+          {
+            "type": "nullary_call",
+            "named": true
+          },
+          {
+            "type": "octal",
+            "named": true
+          },
+          {
+            "type": "parenthesize",
+            "named": true
+          },
+          {
+            "type": "plain",
+            "named": true
+          },
+          {
+            "type": "single_quoted",
+            "named": true
+          },
+          {
+            "type": "source",
+            "named": true
+          },
+          {
+            "type": "subtractive",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "constant",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "division",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "divide",
+          "named": true
+        },
+        {
+          "type": "division",
+          "named": true
+        },
+        {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "member",
+          "named": true
+        },
+        {
+          "type": "modulo",
+          "named": true
+        },
+        {
+          "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "plain",
           "named": true
         },
         {
@@ -363,7 +464,7 @@
     }
   },
   {
-    "type": "logical",
+    "type": "equal",
     "named": true,
     "fields": {},
     "children": {
@@ -375,23 +476,7 @@
           "named": true
         },
         {
-          "type": "and",
-          "named": true
-        },
-        {
-          "type": "assign",
-          "named": true
-        },
-        {
           "type": "binary",
-          "named": true
-        },
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comparison",
           "named": true
         },
         {
@@ -399,7 +484,15 @@
           "named": true
         },
         {
+          "type": "division",
+          "named": true
+        },
+        {
           "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "equal_sign",
           "named": true
         },
         {
@@ -411,11 +504,11 @@
           "named": true
         },
         {
-          "type": "logical",
+          "type": "member",
           "named": true
         },
         {
-          "type": "member",
+          "type": "modulo",
           "named": true
         },
         {
@@ -423,15 +516,19 @@
           "named": true
         },
         {
+          "type": "nullary_call",
+          "named": true
+        },
+        {
           "type": "octal",
           "named": true
         },
         {
-          "type": "or",
+          "type": "parenthesize",
           "named": true
         },
         {
-          "type": "parenthesize",
+          "type": "plain",
           "named": true
         },
         {
@@ -441,12 +538,16 @@
         {
           "type": "source",
           "named": true
+        },
+        {
+          "type": "subtractive",
+          "named": true
         }
       ]
     }
   },
   {
-    "type": "member",
+    "type": "greater_than",
     "named": true,
     "fields": {},
     "children": {
@@ -458,19 +559,7 @@
           "named": true
         },
         {
-          "type": "assign",
-          "named": true
-        },
-        {
           "type": "binary",
-          "named": true
-        },
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comparison",
           "named": true
         },
         {
@@ -478,11 +567,15 @@
           "named": true
         },
         {
+          "type": "division",
+          "named": true
+        },
+        {
           "type": "double_quoted",
           "named": true
         },
         {
-          "type": "extract",
+          "type": "greater",
           "named": true
         },
         {
@@ -494,15 +587,19 @@
           "named": true
         },
         {
-          "type": "logical",
-          "named": true
-        },
-        {
           "type": "member",
           "named": true
         },
         {
+          "type": "modulo",
+          "named": true
+        },
+        {
           "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
           "named": true
         },
         {
@@ -511,6 +608,397 @@
         },
         {
           "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "plain",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "subtractive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "greater_than_or_equal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "additive",
+          "named": true
+        },
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "division",
+          "named": true
+        },
+        {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "greater_or_equal",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "member",
+          "named": true
+        },
+        {
+          "type": "modulo",
+          "named": true
+        },
+        {
+          "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "plain",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "subtractive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "implicit_member",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "extract",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "less_than",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "additive",
+          "named": true
+        },
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "division",
+          "named": true
+        },
+        {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "less",
+          "named": true
+        },
+        {
+          "type": "member",
+          "named": true
+        },
+        {
+          "type": "modulo",
+          "named": true
+        },
+        {
+          "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "plain",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "subtractive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "less_than_or_equal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "additive",
+          "named": true
+        },
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "division",
+          "named": true
+        },
+        {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "less_or_equal",
+          "named": true
+        },
+        {
+          "type": "member",
+          "named": true
+        },
+        {
+          "type": "modulo",
+          "named": true
+        },
+        {
+          "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "plain",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "subtractive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "member",
+    "named": true,
+    "fields": {
+      "object": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member",
+            "named": true
+          }
+        ]
+      },
+      "property": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "extract",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "modulo",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "division",
+          "named": true
+        },
+        {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "member",
+          "named": true
+        },
+        {
+          "type": "mod",
+          "named": true
+        },
+        {
+          "type": "modulo",
+          "named": true
+        },
+        {
+          "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "plain",
           "named": true
         },
         {
@@ -533,23 +1021,7 @@
       "required": true,
       "types": [
         {
-          "type": "additive",
-          "named": true
-        },
-        {
-          "type": "assign",
-          "named": true
-        },
-        {
           "type": "binary",
-          "named": true
-        },
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comparison",
           "named": true
         },
         {
@@ -557,7 +1029,7 @@
           "named": true
         },
         {
-          "type": "divide",
+          "type": "division",
           "named": true
         },
         {
@@ -570,10 +1042,6 @@
         },
         {
           "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "logical",
           "named": true
         },
         {
@@ -593,6 +1061,10 @@
           "named": true
         },
         {
+          "type": "nullary_call",
+          "named": true
+        },
+        {
           "type": "octal",
           "named": true
         },
@@ -601,11 +1073,121 @@
           "named": true
         },
         {
+          "type": "plain",
+          "named": true
+        },
+        {
           "type": "single_quoted",
           "named": true
         },
         {
           "type": "source",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "not_equal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "additive",
+          "named": true
+        },
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "division",
+          "named": true
+        },
+        {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "member",
+          "named": true
+        },
+        {
+          "type": "modulo",
+          "named": true
+        },
+        {
+          "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "not_equal_sign",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "plain",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "subtractive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nullary_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "member",
+          "named": true
+        },
+        {
+          "type": "pipe",
           "named": true
         }
       ]
@@ -624,10 +1206,6 @@
           "named": true
         },
         {
-          "type": "assign",
-          "named": true
-        },
-        {
           "type": "binary",
           "named": true
         },
@@ -636,7 +1214,7 @@
           "named": true
         },
         {
-          "type": "comparison",
+          "type": "constant_assignment",
           "named": true
         },
         {
@@ -644,7 +1222,23 @@
           "named": true
         },
         {
+          "type": "division",
+          "named": true
+        },
+        {
           "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "equal",
+          "named": true
+        },
+        {
+          "type": "greater_than",
+          "named": true
+        },
+        {
+          "type": "greater_than_or_equal",
           "named": true
         },
         {
@@ -656,7 +1250,11 @@
           "named": true
         },
         {
-          "type": "logical",
+          "type": "less_than",
+          "named": true
+        },
+        {
+          "type": "less_than_or_equal",
           "named": true
         },
         {
@@ -664,7 +1262,19 @@
           "named": true
         },
         {
+          "type": "modulo",
+          "named": true
+        },
+        {
           "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "not_equal",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
           "named": true
         },
         {
@@ -676,11 +1286,23 @@
           "named": true
         },
         {
+          "type": "plain",
+          "named": true
+        },
+        {
           "type": "single_quoted",
           "named": true
         },
         {
           "type": "source",
+          "named": true
+        },
+        {
+          "type": "subtractive",
+          "named": true
+        },
+        {
+          "type": "variable_assignment",
           "named": true
         }
       ]
@@ -718,10 +1340,6 @@
           "named": true
         },
         {
-          "type": "assign",
-          "named": true
-        },
-        {
           "type": "binary",
           "named": true
         },
@@ -730,7 +1348,7 @@
           "named": true
         },
         {
-          "type": "comparison",
+          "type": "constant_assignment",
           "named": true
         },
         {
@@ -738,7 +1356,23 @@
           "named": true
         },
         {
+          "type": "division",
+          "named": true
+        },
+        {
           "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "equal",
+          "named": true
+        },
+        {
+          "type": "greater_than",
+          "named": true
+        },
+        {
+          "type": "greater_than_or_equal",
           "named": true
         },
         {
@@ -750,7 +1384,11 @@
           "named": true
         },
         {
-          "type": "logical",
+          "type": "less_than",
+          "named": true
+        },
+        {
+          "type": "less_than_or_equal",
           "named": true
         },
         {
@@ -758,7 +1396,19 @@
           "named": true
         },
         {
+          "type": "modulo",
+          "named": true
+        },
+        {
           "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "not_equal",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
           "named": true
         },
         {
@@ -770,11 +1420,23 @@
           "named": true
         },
         {
+          "type": "plain",
+          "named": true
+        },
+        {
           "type": "single_quoted",
           "named": true
         },
         {
           "type": "source",
+          "named": true
+        },
+        {
+          "type": "subtractive",
+          "named": true
+        },
+        {
+          "type": "variable_assignment",
           "named": true
         }
       ]
@@ -794,10 +1456,6 @@
           "named": true
         },
         {
-          "type": "assign",
-          "named": true
-        },
-        {
           "type": "binary",
           "named": true
         },
@@ -806,11 +1464,122 @@
           "named": true
         },
         {
-          "type": "comparison",
+          "type": "constant_assignment",
           "named": true
         },
         {
           "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "division",
+          "named": true
+        },
+        {
+          "type": "double_quoted",
+          "named": true
+        },
+        {
+          "type": "equal",
+          "named": true
+        },
+        {
+          "type": "greater_than",
+          "named": true
+        },
+        {
+          "type": "greater_than_or_equal",
+          "named": true
+        },
+        {
+          "type": "hex",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "less_than",
+          "named": true
+        },
+        {
+          "type": "less_than_or_equal",
+          "named": true
+        },
+        {
+          "type": "member",
+          "named": true
+        },
+        {
+          "type": "modulo",
+          "named": true
+        },
+        {
+          "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "not_equal",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
+          "named": true
+        },
+        {
+          "type": "octal",
+          "named": true
+        },
+        {
+          "type": "parenthesize",
+          "named": true
+        },
+        {
+          "type": "plain",
+          "named": true
+        },
+        {
+          "type": "single_quoted",
+          "named": true
+        },
+        {
+          "type": "source",
+          "named": true
+        },
+        {
+          "type": "subtractive",
+          "named": true
+        },
+        {
+          "type": "variable_assignment",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "subtractive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "additive",
+          "named": true
+        },
+        {
+          "type": "binary",
+          "named": true
+        },
+        {
+          "type": "decimal",
+          "named": true
+        },
+        {
+          "type": "division",
           "named": true
         },
         {
@@ -826,15 +1595,19 @@
           "named": true
         },
         {
-          "type": "logical",
-          "named": true
-        },
-        {
           "type": "member",
           "named": true
         },
         {
+          "type": "modulo",
+          "named": true
+        },
+        {
           "type": "multiplicative",
+          "named": true
+        },
+        {
+          "type": "nullary_call",
           "named": true
         },
         {
@@ -846,11 +1619,155 @@
           "named": true
         },
         {
+          "type": "plain",
+          "named": true
+        },
+        {
           "type": "single_quoted",
           "named": true
         },
         {
           "type": "source",
+          "named": true
+        },
+        {
+          "type": "subtract",
+          "named": true
+        },
+        {
+          "type": "subtractive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "variable_assignment",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "member",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "additive",
+            "named": true
+          },
+          {
+            "type": "binary",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "decimal",
+            "named": true
+          },
+          {
+            "type": "division",
+            "named": true
+          },
+          {
+            "type": "double_quoted",
+            "named": true
+          },
+          {
+            "type": "equal",
+            "named": true
+          },
+          {
+            "type": "greater_than",
+            "named": true
+          },
+          {
+            "type": "greater_than_or_equal",
+            "named": true
+          },
+          {
+            "type": "hex",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "less_than",
+            "named": true
+          },
+          {
+            "type": "less_than_or_equal",
+            "named": true
+          },
+          {
+            "type": "member",
+            "named": true
+          },
+          {
+            "type": "modulo",
+            "named": true
+          },
+          {
+            "type": "multiplicative",
+            "named": true
+          },
+          {
+            "type": "not_equal",
+            "named": true
+          },
+          {
+            "type": "nullary_call",
+            "named": true
+          },
+          {
+            "type": "octal",
+            "named": true
+          },
+          {
+            "type": "parenthesize",
+            "named": true
+          },
+          {
+            "type": "plain",
+            "named": true
+          },
+          {
+            "type": "single_quoted",
+            "named": true
+          },
+          {
+            "type": "source",
+            "named": true
+          },
+          {
+            "type": "subtractive",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "variable",
           "named": true
         }
       ]
@@ -873,15 +1790,15 @@
     "named": false
   },
   {
+    "type": ",",
+    "named": false
+  },
+  {
     "type": ";",
     "named": false
   },
   {
     "type": "add",
-    "named": true
-  },
-  {
-    "type": "and",
     "named": true
   },
   {
@@ -901,7 +1818,7 @@
     "named": true
   },
   {
-    "type": "equal",
+    "type": "equal_sign",
     "named": true
   },
   {
@@ -913,11 +1830,11 @@
     "named": true
   },
   {
-    "type": "greater_equal",
+    "type": "greater",
     "named": true
   },
   {
-    "type": "greater_than",
+    "type": "greater_or_equal",
     "named": true
   },
   {
@@ -929,15 +1846,15 @@
     "named": true
   },
   {
-    "type": "less_equal",
+    "type": "less",
     "named": true
   },
   {
-    "type": "less_than",
+    "type": "less_or_equal",
     "named": true
   },
   {
-    "type": "modulo",
+    "type": "mod",
     "named": true
   },
   {
@@ -945,7 +1862,7 @@
     "named": true
   },
   {
-    "type": "not_equal",
+    "type": "not_equal_sign",
     "named": true
   },
   {
@@ -953,11 +1870,11 @@
     "named": true
   },
   {
-    "type": "or",
+    "type": "pipe",
     "named": true
   },
   {
-    "type": "pipe",
+    "type": "plain",
     "named": true
   },
   {

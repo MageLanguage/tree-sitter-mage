@@ -1,31 +1,69 @@
 ==================
-Constant
+Constant assignment
 ==================
 
-() : ()
+x : 0d42
 
 ---
 
 (source_file
-    (assign
-        (parenthesize)
+    (constant_assignment
+        name: (identifier)
         (constant)
-        (parenthesize)
-    )
-)
+        value: (decimal)))
 
 ==================
-Variable
+Variable assignment
 ==================
 
-() = ()
+x = 0d42
 
 ---
 
 (source_file
-    (assign
-        (parenthesize)
+    (variable_assignment
+        name: (identifier)
         (variable)
-        (parenthesize)
-    )
-)
+        value: (decimal)))
+
+==================
+Constant with call
+==================
+
+factorial : {n : Uint}, Uint, {n} => procedure
+
+---
+
+(source_file
+    (constant_assignment
+        name: (identifier)
+        (constant)
+        value: (call
+            arguments: (argument_list
+                (source
+                    (constant_assignment
+                        name: (identifier)
+                        (constant)
+                        value: (identifier)))
+                (identifier)
+                (source
+                    (identifier)))
+            (pipe)
+            name: (identifier))))
+
+==================
+Member constant
+==================
+
+File.open : 0d1
+
+---
+
+(source_file
+    (constant_assignment
+        name: (member
+            object: (identifier)
+            (extract)
+            property: (identifier))
+        (constant)
+        value: (decimal)))

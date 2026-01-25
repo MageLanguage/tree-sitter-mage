@@ -2,94 +2,82 @@
 Equal
 ==================
 
-() == ()
+0d1 == 0d1
 
 ---
 
 (source_file
-    (comparison
-        (parenthesize)
-        (equal)
-        (parenthesize)
-    )
-)
+    (equal
+        (decimal)
+        (equal_sign)
+        (decimal)))
 
 ==================
 Not equal
 ==================
 
-() != ()
+0d1 != 0d2
 
 ---
 
 (source_file
-    (comparison
-        (parenthesize)
-        (not_equal)
-        (parenthesize)
-    )
-)
+    (not_equal
+        (decimal)
+        (not_equal_sign)
+        (decimal)))
 
 ==================
 Less than
 ==================
 
-() < ()
+0d1 < 0d2
 
 ---
 
 (source_file
-    (comparison
-        (parenthesize)
-        (less_than)
-        (parenthesize)
-    )
-)
+    (less_than
+        (decimal)
+        (less)
+        (decimal)))
 
 ==================
 Greater than
 ==================
 
-() > ()
+0d2 > 0d1
 
 ---
 
 (source_file
-    (comparison
-        (parenthesize)
-        (greater_than)
-        (parenthesize)
-    )
-)
+    (greater_than
+        (decimal)
+        (greater)
+        (decimal)))
 
 ==================
-Less equal
+Less than or equal
 ==================
 
-() <= ()
+0d1 <= 0d2
 
 ---
 
 (source_file
-    (comparison
-        (parenthesize)
-        (less_equal)
-        (parenthesize)
-    )
-)
+    (less_than_or_equal
+        (decimal)
+        (less_or_equal)
+        (decimal)))
 
 ==================
-Greater equal
+Greater than or equal
 ==================
 
-() >= ()
+0d2 >= 0d1
 
 ---
 
 (source_file
-    (comparison
-        (parenthesize)
-        (greater_equal)
-        (parenthesize)
-    )
-)
+    (greater_than_or_equal
+        (decimal)
+        (greater_or_equal)
+        (decimal)))

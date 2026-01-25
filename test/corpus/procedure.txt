@@ -1,0 +1,128 @@
+==================
+Procedure definition
+==================
+
+double : {x : Uint}, Uint, {x + x => return} => procedure
+
+---
+
+(source_file
+    (constant_assignment
+        name: (identifier)
+        (constant)
+        value: (call
+            arguments: (argument_list
+                (source
+                    (constant_assignment
+                        name: (identifier)
+                        (constant)
+                        value: (identifier)))
+                (identifier)
+                (source
+                    (call
+                        arguments: (argument_list
+                            (additive
+                                (identifier)
+                                (add)
+                                (identifier)))
+                        (pipe)
+                        name: (identifier))))
+            (pipe)
+            name: (identifier))))
+
+==================
+Import statement
+==================
+
+IO : "core/IO.mg" => import
+
+---
+
+(source_file
+    (constant_assignment
+        name: (identifier)
+        (constant)
+        value: (call
+            arguments: (argument_list
+                (double_quoted
+                    (raw)))
+            (pipe)
+            name: (identifier))))
+
+==================
+Export block
+==================
+
+{
+    foo : foo;
+    bar : bar
+} => export
+
+---
+
+(source_file
+    (call
+        arguments: (argument_list
+            (source
+                (constant_assignment
+                    name: (identifier)
+                    (constant)
+                    value: (identifier))
+                (constant_assignment
+                    name: (identifier)
+                    (constant)
+                    value: (identifier))))
+        (pipe)
+        name: (identifier)))
+
+==================
+Control flow - if
+==================
+
+0d1 < 0d2, {0d0 => return} => if
+
+---
+
+(source_file
+    (call
+        arguments: (argument_list
+            (less_than
+                (decimal)
+                (less)
+                (decimal))
+            (source
+                (call
+                    arguments: (argument_list
+                        (decimal))
+                    (pipe)
+                    name: (identifier))))
+        (pipe)
+        name: (identifier)))
+
+==================
+Control flow - while
+==================
+
+i < 0d10, {
+    i = i + 0d1
+} => while
+
+---
+
+(source_file
+    (call
+        arguments: (argument_list
+            (less_than
+                (identifier)
+                (less)
+                (decimal))
+            (source
+                (variable_assignment
+                    name: (identifier)
+                    (variable)
+                    value: (additive
+                        (identifier)
+                        (add)
+                        (decimal)))))
+        (pipe)
+        name: (identifier)))

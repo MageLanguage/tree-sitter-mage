@@ -1,11 +1,24 @@
 ==================
-Parenthesize
+Parenthesized expression
 ==================
 
-()
+(0d42)
 
 ---
 
 (source_file
-    (parenthesize)
-)
+    (parenthesize
+        (decimal)))
+
+==================
+Nested parentheses
+==================
+
+((0d1))
+
+---
+
+(source_file
+    (parenthesize
+        (parenthesize
+            (decimal))))

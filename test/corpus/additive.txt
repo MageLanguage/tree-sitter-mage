@@ -1,31 +1,61 @@
 ==================
-Add
+Addition
 ==================
 
-() + ()
+0d1 + 0d2
 
 ---
 
 (source_file
     (additive
-        (parenthesize)
+        (decimal)
         (add)
-        (parenthesize)
-    )
-)
+        (decimal)))
 
 ==================
-Subtract
+Subtraction
 ==================
 
-() - ()
+0d1 - 0d2
+
+---
+
+(source_file
+    (subtractive
+        (decimal)
+        (subtract)
+        (decimal)))
+
+==================
+Chained addition
+==================
+
+0d1 + 0d2 + 0d3
 
 ---
 
 (source_file
     (additive
-        (parenthesize)
+        (additive
+            (decimal)
+            (add)
+            (decimal))
+        (add)
+        (decimal)))
+
+==================
+Mixed operations
+==================
+
+0d1 + 0d2 - 0d3
+
+---
+
+(source_file
+    (subtractive
+        (additive
+            (decimal)
+            (add)
+            (decimal))
         (subtract)
-        (parenthesize)
-    )
-)
+        (decimal)))

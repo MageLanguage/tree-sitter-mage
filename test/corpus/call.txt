@@ -1,15 +1,114 @@
 ==================
-Call
+Simple call
 ==================
 
-() => ()
+0d1 => foo
 
 ---
 
 (source_file
     (call
-        (parenthesize)
+        arguments: (argument_list
+            (decimal))
         (pipe)
-        (parenthesize)
-    )
-)
+        name: (identifier)))
+
+==================
+Nullary call
+==================
+
+=> return
+
+---
+
+(source_file
+    (nullary_call
+        (pipe)
+        (identifier)))
+
+==================
+Multiple arguments
+==================
+
+0d1, 0d2, 0d3 => test
+
+---
+
+(source_file
+    (call
+        arguments: (argument_list
+            (decimal)
+            (decimal)
+            (decimal))
+        (pipe)
+        name: (identifier)))
+
+==================
+Chained calls
+==================
+
+0d1 => foo => bar
+
+---
+
+(source_file
+    (call
+        arguments: (argument_list
+            (call
+                arguments: (argument_list
+                    (decimal))
+                (pipe)
+                name: (identifier)))
+        (pipe)
+        name: (identifier)))
+
+==================
+Call with block
+==================
+
+{0d1} => procedure
+
+---
+
+(source_file
+    (call
+        arguments: (argument_list
+            (source
+                (decimal)))
+        (pipe)
+        name: (identifier)))
+
+==================
+Implicit member call
+==================
+
+0d1 => .method
+
+---
+
+(source_file
+    (call
+        arguments: (argument_list
+            (decimal))
+        (pipe)
+        name: (implicit_member
+            (extract)
+            (identifier))))
+
+==================
+Member call
+==================
+
+0d1 => Foo.bar
+
+---
+
+(source_file
+    (call
+        arguments: (argument_list
+            (decimal))
+        (pipe)
+        name: (member
+            object: (identifier)
+            (extract)
+            property: (identifier))))

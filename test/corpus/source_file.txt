@@ -1,7 +1,33 @@
 ==================
-Source file
+Empty source file
 ==================
 
 ---
 
 (source_file)
+
+==================
+Single expression
+==================
+
+0d42
+
+---
+
+(source_file
+    (decimal))
+
+==================
+Multiple statements
+==================
+
+0d1;
+0d2;
+0d3
+
+---
+
+(source_file
+    (decimal)
+    (decimal)
+    (decimal))

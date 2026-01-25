@@ -1,5 +1,5 @@
 ==================
-Source
+Empty source block
 ==================
 
 {}
@@ -7,5 +7,20 @@ Source
 ---
 
 (source_file
-    (source)
-)
+    (source))
+
+==================
+Source with statements
+==================
+
+{
+    0d1;
+    0d2
+}
+
+---
+
+(source_file
+    (source
+        (decimal)
+        (decimal)))

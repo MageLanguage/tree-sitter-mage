@@ -2,7 +2,7 @@
 Procedure definition
 ==================
 
-double : {x : Uint}, Uint, {x + x => return} => procedure
+double : procedure {x : Uint}, Uint, {return x + x}
 
 ---
 
@@ -11,6 +11,7 @@ double : {x : Uint}, Uint, {x + x => return} => procedure
         name: (identifier)
         (constant)
         value: (call
+            name: (identifier)
             arguments: (argument_list
                 (source
                     (constant_assignment
@@ -20,21 +21,18 @@ double : {x : Uint}, Uint, {x + x => return} => procedure
                 (identifier)
                 (source
                     (call
+                        name: (identifier)
                         arguments: (argument_list
                             (additive
                                 (identifier)
                                 (addition)
-                                (identifier)))
-                        (pipe)
-                        name: (identifier))))
-            (pipe)
-            name: (identifier))))
+                                (identifier)))))))))
 
 ==================
 Import statement
 ==================
 
-IO : "core/IO.mg" => import
+IO : import "core/IO.mg"
 
 ---
 
@@ -43,25 +41,25 @@ IO : "core/IO.mg" => import
         name: (identifier)
         (constant)
         value: (call
+            name: (identifier)
             arguments: (argument_list
                 (double_quoted
-                    (raw)))
-            (pipe)
-            name: (identifier))))
+                    (raw))))))
 
 ==================
 Export block
 ==================
 
-{
+export {
     foo : foo;
     bar : bar
-} => export
+}
 
 ---
 
 (source_file
     (call
+        name: (identifier)
         arguments: (argument_list
             (source
                 (constant_assignment
@@ -71,20 +69,19 @@ Export block
                 (constant_assignment
                     name: (identifier)
                     (constant)
-                    value: (identifier))))
-        (pipe)
-        name: (identifier)))
+                    value: (identifier))))))
 
 ==================
 Control flow - if
 ==================
 
-0d1 < 0d2, {0d0 => return} => if
+if 0d1 < 0d2, {return 0d0}
 
 ---
 
 (source_file
     (call
+        name: (identifier)
         arguments: (argument_list
             (less_than
                 (decimal)
@@ -92,25 +89,23 @@ Control flow - if
                 (decimal))
             (source
                 (call
+                    name: (identifier)
                     arguments: (argument_list
-                        (decimal))
-                    (pipe)
-                    name: (identifier))))
-        (pipe)
-        name: (identifier)))
+                        (decimal)))))))
 
 ==================
 Control flow - while
 ==================
 
-i < 0d10, {
+while i < 0d10, {
     i = i + 0d1
-} => while
+}
 
 ---
 
 (source_file
     (call
+        name: (identifier)
         arguments: (argument_list
             (less_than
                 (identifier)
@@ -123,6 +118,4 @@ i < 0d10, {
                     value: (additive
                         (identifier)
                         (addition)
-                        (decimal)))))
-        (pipe)
-        name: (identifier)))
+                        (decimal)))))))

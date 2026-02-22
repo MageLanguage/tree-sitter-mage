@@ -27,10 +27,10 @@ x = 0d42
         value: (decimal)))
 
 ==================
-Constant with call
+Constant with procedure call
 ==================
 
-factorial : {n : Uint}, Uint, {n} => procedure
+factorial : procedure {n : Uint}, Uint, {n}
 
 ---
 
@@ -39,6 +39,7 @@ factorial : {n : Uint}, Uint, {n} => procedure
         name: (identifier)
         (constant)
         value: (call
+            name: (identifier)
             arguments: (argument_list
                 (source
                     (constant_assignment
@@ -47,9 +48,45 @@ factorial : {n : Uint}, Uint, {n} => procedure
                         value: (identifier)))
                 (identifier)
                 (source
-                    (identifier)))
-            (pipe)
-            name: (identifier))))
+                    (identifier))))))
+
+==================
+Variable with call
+==================
+
+x = add 0d1, 0d2
+
+---
+
+(source_file
+    (variable_assignment
+        name: (identifier)
+        (variable)
+        value: (call
+            name: (identifier)
+            arguments: (argument_list
+                (decimal)
+                (decimal)))))
+
+==================
+Multiple variable assignment
+==================
+
+c, d = exchange 0d10, 0d20
+
+---
+
+(source_file
+    (multiple_variable_assignment
+        names: (name_list
+            (identifier)
+            (identifier))
+        (variable)
+        value: (call
+            name: (identifier)
+            arguments: (argument_list
+                (decimal)
+                (decimal)))))
 
 ==================
 Member constant

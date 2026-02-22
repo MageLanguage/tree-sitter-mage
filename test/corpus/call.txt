@@ -2,113 +2,100 @@
 Simple call
 ==================
 
-0d1 => foo
+foo 0d1
 
 ---
 
 (source_file
     (call
+        name: (identifier)
         arguments: (argument_list
-            (decimal))
-        (pipe)
-        name: (identifier)))
-
-==================
-Nullary call
-==================
-
-=> return
-
----
-
-(source_file
-    (nullary_call
-        (pipe)
-        (identifier)))
+            (decimal))))
 
 ==================
 Multiple arguments
 ==================
 
-0d1, 0d2, 0d3 => test
+test 0d1, 0d2, 0d3
 
 ---
 
 (source_file
     (call
+        name: (identifier)
         arguments: (argument_list
             (decimal)
             (decimal)
-            (decimal))
-        (pipe)
-        name: (identifier)))
+            (decimal))))
 
 ==================
-Chained calls
+Call with expression argument
 ==================
 
-0d1 => foo => bar
+return x + 0d1
 
 ---
 
 (source_file
     (call
+        name: (identifier)
         arguments: (argument_list
-            (call
-                arguments: (argument_list
-                    (decimal))
-                (pipe)
-                name: (identifier)))
-        (pipe)
-        name: (identifier)))
+            (additive
+                (identifier)
+                (addition)
+                (decimal)))))
 
 ==================
-Call with block
+Call with block argument
 ==================
 
-{0d1} => procedure
+procedure {0d1}
 
 ---
 
 (source_file
     (call
+        name: (identifier)
         arguments: (argument_list
             (source
-                (decimal)))
-        (pipe)
-        name: (identifier)))
+                (decimal)))))
 
 ==================
-Implicit member call
+Nested call in parentheses
 ==================
 
-0d1 => .method
+return (factorial 0d5) + 0d1
 
 ---
 
 (source_file
     (call
+        name: (identifier)
         arguments: (argument_list
-            (decimal))
-        (pipe)
-        name: (implicit_member
-            (extract)
-            (identifier))))
+            (additive
+                (parenthesize
+                    (call
+                        name: (identifier)
+                        arguments: (argument_list
+                            (decimal))))
+                (addition)
+                (decimal)))))
 
 ==================
-Member call
+Call with comparison argument
 ==================
 
-0d1 => Foo.bar
+if n < 0d2, {0d1}
 
 ---
 
 (source_file
     (call
+        name: (identifier)
         arguments: (argument_list
-            (decimal))
-        (pipe)
-        name: (member
-            object: (identifier)
-            (extract)
-            property: (identifier))))
+            (less_than
+                (identifier)
+                (less_than_sign)
+                (decimal))
+            (source
+                (decimal)))))

@@ -20,14 +20,19 @@ export default grammar({
     parenthesize: ($) => seq("(", $._statement, ")"),
 
     _statement: ($) =>
-      choice($.constant_assignment, $.variable_assignment, $._pipe_expression),
+      choice(
+        $.constant_assignment,
+        $.multiple_variable_assignment,
+        $.variable_assignment,
+        $._expression,
+      ),
 
     constant_assignment: ($) =>
       prec.right(
         seq(
           field("name", $._member_expression),
           alias(":", $.constant),
-          field("value", $._pipe_expression),
+          field("value", $._expression),
         ),
       ),
 
@@ -36,31 +41,22 @@ export default grammar({
         seq(
           field("name", $._member_expression),
           alias("=", $.variable),
-          field("value", $._pipe_expression),
+          field("value", $._expression),
         ),
       ),
 
-    _pipe_expression: ($) => choice($.call, $._comparison_expression),
-
-    call: ($) =>
-      prec.left(
+    multiple_variable_assignment: ($) =>
+      prec.right(
         seq(
-          field("arguments", alias($._argument_list, $.argument_list)),
-          alias("=>", $.pipe),
-          field("name", $._call_target),
+          field("names", alias($._name_list, $.name_list)),
+          alias("=", $.variable),
+          field("value", $._expression),
         ),
       ),
 
-    _call_target: ($) =>
-      choice($.implicit_member, $.parenthesize, $._member_expression),
+    _name_list: ($) => seq($.identifier, repeat1(seq(",", $.identifier))),
 
-    implicit_member: ($) => seq(alias(".", $.extract), $.identifier),
-
-    _argument_list: ($) =>
-      prec.left(
-        1,
-        seq($._pipe_expression, optional(seq(",", $._argument_list))),
-      ),
+    _expression: ($) => $._comparison_expression,
 
     _comparison_expression: ($) =>
       choice(
@@ -147,27 +143,40 @@ export default grammar({
         seq($._arithmetic_expression, alias("-", $.subtraction), $._term),
       ),
 
-    _term: ($) => choice($.multiplicative, $.divisive, $.modulo, $._atom),
+    _term: ($) =>
+      choice($.multiplicative, $.divisive, $.modulo, $._call_or_atom),
 
     multiplicative: ($) =>
-      prec.left(6, seq($._term, alias("*", $.multiplication), $._atom)),
+      prec.left(6, seq($._term, alias("*", $.multiplication), $._call_or_atom)),
 
     divisive: ($) =>
-      prec.left(6, seq($._term, alias("/", $.division), $._atom)),
+      prec.left(6, seq($._term, alias("/", $.division), $._call_or_atom)),
 
-    modulo: ($) => prec.left(6, seq($._term, alias("%", $.modulus), $._atom)),
+    modulo: ($) =>
+      prec.left(6, seq($._term, alias("%", $.modulus), $._call_or_atom)),
+
+    _call_or_atom: ($) => choice($.call, $._atom),
+
+    call: ($) =>
+      prec.left(
+        3,
+        seq(
+          field("name", $.identifier),
+          field("arguments", alias($._argument_list, $.argument_list)),
+        ),
+      ),
+
+    _argument_list: ($) =>
+      prec.left(seq($._expression, repeat(seq(",", $._expression)))),
 
     _atom: ($) =>
       choice(
         $.parenthesize,
-        $.nullary_call,
         $._member_expression,
         $._number,
         $._string,
         prec(-1, $.source),
       ),
-
-    nullary_call: ($) => seq(alias("=>", $.pipe), $._member_expression),
 
     _member_expression: ($) => choice($.member, $.identifier),
 

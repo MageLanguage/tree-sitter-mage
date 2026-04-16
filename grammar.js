@@ -10,6 +10,8 @@
 export default grammar({
   name: "mage",
 
+  conflicts: ($) => [[$._argument_atom, $._atom]],
+
   rules: {
     source_file: ($) =>
       seq(repeat(seq($._statement, ";")), optional($._statement)),
@@ -144,30 +146,167 @@ export default grammar({
       ),
 
     _term: ($) =>
-      choice($.multiplicative, $.divisive, $.modulo, $._call_or_atom),
+      choice($.multiplicative, $.divisive, $.modulo, $._postfix_expression),
 
     multiplicative: ($) =>
-      prec.left(6, seq($._term, alias("*", $.multiplication), $._call_or_atom)),
+      prec.left(
+        6,
+        seq($._term, alias("*", $.multiplication), $._postfix_expression),
+      ),
 
     divisive: ($) =>
-      prec.left(6, seq($._term, alias("/", $.division), $._call_or_atom)),
+      prec.left(6, seq($._term, alias("/", $.division), $._postfix_expression)),
 
     modulo: ($) =>
-      prec.left(6, seq($._term, alias("%", $.modulus), $._call_or_atom)),
+      prec.left(6, seq($._term, alias("%", $.modulus), $._postfix_expression)),
 
-    _call_or_atom: ($) => choice($.call, $._atom),
+    _postfix_expression: ($) => choice(prec(1, $.call), $._atom),
 
     call: ($) =>
       prec.left(
-        3,
+        7,
         seq(
-          field("name", $.identifier),
-          field("arguments", alias($._argument_list, $.argument_list)),
+          field("name", $._postfix_expression),
+          field(
+            "arguments",
+            alias($._application_argument_list, $.argument_list),
+          ),
         ),
       ),
 
-    _argument_list: ($) =>
-      prec.left(seq($._expression, repeat(seq(",", $._expression)))),
+    _application_argument_list: ($) =>
+      seq($._application_argument, repeat(seq(",", $._application_argument))),
+
+    _application_argument: ($) => $._comparison_argument,
+
+    _comparison_argument: ($) =>
+      choice(
+        alias($._argument_less_than, $.less_than),
+        alias($._argument_greater_than, $.greater_than),
+        alias($._argument_less_than_or_equal, $.less_than_or_equal),
+        alias($._argument_greater_than_or_equal, $.greater_than_or_equal),
+        alias($._argument_equal, $.equal),
+        alias($._argument_not_equal, $.not_equal),
+        $._arithmetic_argument,
+      ),
+
+    _argument_less_than: ($) =>
+      prec.left(
+        4,
+        seq(
+          $._arithmetic_argument,
+          alias("<", $.less_than_sign),
+          $._arithmetic_argument,
+        ),
+      ),
+
+    _argument_greater_than: ($) =>
+      prec.left(
+        4,
+        seq(
+          $._arithmetic_argument,
+          alias(">", $.greater_than_sign),
+          $._arithmetic_argument,
+        ),
+      ),
+
+    _argument_less_than_or_equal: ($) =>
+      prec.left(
+        4,
+        seq(
+          $._arithmetic_argument,
+          alias("<=", $.less_than_or_equal_sign),
+          $._arithmetic_argument,
+        ),
+      ),
+
+    _argument_greater_than_or_equal: ($) =>
+      prec.left(
+        4,
+        seq(
+          $._arithmetic_argument,
+          alias(">=", $.greater_than_or_equal_sign),
+          $._arithmetic_argument,
+        ),
+      ),
+
+    _argument_equal: ($) =>
+      prec.left(
+        4,
+        seq(
+          $._arithmetic_argument,
+          alias("==", $.equal_sign),
+          $._arithmetic_argument,
+        ),
+      ),
+
+    _argument_not_equal: ($) =>
+      prec.left(
+        4,
+        seq(
+          $._arithmetic_argument,
+          alias("!=", $.not_equal_sign),
+          $._arithmetic_argument,
+        ),
+      ),
+
+    _arithmetic_argument: ($) =>
+      choice(
+        alias($._argument_additive, $.additive),
+        alias($._argument_subtractive, $.subtractive),
+        $._term_argument,
+      ),
+
+    _argument_additive: ($) =>
+      prec.left(
+        5,
+        seq($._arithmetic_argument, alias("+", $.addition), $._term_argument),
+      ),
+
+    _argument_subtractive: ($) =>
+      prec.left(
+        5,
+        seq(
+          $._arithmetic_argument,
+          alias("-", $.subtraction),
+          $._term_argument,
+        ),
+      ),
+
+    _term_argument: ($) =>
+      choice(
+        alias($._argument_multiplicative, $.multiplicative),
+        alias($._argument_divisive, $.divisive),
+        alias($._argument_modulo, $.modulo),
+        $._argument_atom,
+      ),
+
+    _argument_multiplicative: ($) =>
+      prec.left(
+        6,
+        seq($._term_argument, alias("*", $.multiplication), $._argument_atom),
+      ),
+
+    _argument_divisive: ($) =>
+      prec.left(
+        6,
+        seq($._term_argument, alias("/", $.division), $._argument_atom),
+      ),
+
+    _argument_modulo: ($) =>
+      prec.left(
+        6,
+        seq($._term_argument, alias("%", $.modulus), $._argument_atom),
+      ),
+
+    _argument_atom: ($) =>
+      choice(
+        $.parenthesize,
+        $._member_expression,
+        $._number,
+        $._string,
+        prec(-1, $.source),
+      ),
 
     _atom: ($) =>
       choice(
@@ -182,9 +321,9 @@ export default grammar({
 
     member: ($) =>
       prec.left(
-        7,
+        8,
         seq(
-          field("object", $._member_expression),
+          field("object", $._postfix_expression),
           alias(".", $.extract),
           field("property", $.identifier),
         ),

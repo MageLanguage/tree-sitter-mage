@@ -23,11 +23,25 @@
           "cflags_c": [
             "-std=c11",
           ],
+          "cflags_cc": [
+            "-std=c++20",
+          ],
+          "xcode_settings": {
+            "CLANG_CXX_LANGUAGE_STANDARD": "c++20",
+          },
         }, { # OS == "win"
           "cflags_c": [
             "/std:c11",
             "/utf-8",
           ],
+          "msvs_settings": {
+            "VCCLCompilerTool": {
+              "AdditionalOptions": [
+                "/std:c++20",
+                "/utf-8",
+              ],
+            },
+          },
         }],
       ],
     }

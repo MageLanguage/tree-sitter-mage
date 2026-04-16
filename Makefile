@@ -1,6 +1,6 @@
 LANGUAGE_NAME := tree-sitter-mage
 HOMEPAGE_URL := https://github.com/magelanguage/tree-sitter-mage
-VERSION := 0.3.0
+VERSION := 0.4.0
 
 # repository
 SRC_DIR := src

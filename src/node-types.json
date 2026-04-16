@@ -99,10 +99,6 @@
           "named": true
         },
         {
-          "type": "call",
-          "named": true
-        },
-        {
           "type": "decimal",
           "named": true
         },
@@ -204,7 +200,51 @@
         "required": true,
         "types": [
           {
+            "type": "binary",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "decimal",
+            "named": true
+          },
+          {
+            "type": "double_quoted",
+            "named": true
+          },
+          {
+            "type": "hexadecimal",
+            "named": true
+          },
+          {
             "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "member",
+            "named": true
+          },
+          {
+            "type": "octal",
+            "named": true
+          },
+          {
+            "type": "parenthesize",
+            "named": true
+          },
+          {
+            "type": "single_quoted",
+            "named": true
+          },
+          {
+            "type": "source",
             "named": true
           }
         ]
@@ -857,11 +897,51 @@
         "required": true,
         "types": [
           {
+            "type": "binary",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "decimal",
+            "named": true
+          },
+          {
+            "type": "double_quoted",
+            "named": true
+          },
+          {
+            "type": "hexadecimal",
+            "named": true
+          },
+          {
             "type": "identifier",
             "named": true
           },
           {
+            "type": "integer",
+            "named": true
+          },
+          {
             "type": "member",
+            "named": true
+          },
+          {
+            "type": "octal",
+            "named": true
+          },
+          {
+            "type": "parenthesize",
+            "named": true
+          },
+          {
+            "type": "single_quoted",
+            "named": true
+          },
+          {
+            "type": "source",
             "named": true
           }
         ]

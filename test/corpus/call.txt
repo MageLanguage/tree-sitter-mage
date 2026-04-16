@@ -99,3 +99,95 @@ if n < 0d2, {0d1}
                 (decimal))
             (source
                 (decimal)))))
+
+==================
+Chained call is left-associative
+==================
+
+foo bar baz
+
+---
+
+(source_file
+    (call
+        name: (call
+            name: (identifier)
+            arguments: (argument_list
+                (identifier)))
+        arguments: (argument_list
+            (identifier))))
+
+==================
+Return participates in universal call syntax
+==================
+
+return add 0d3, 0d4
+
+---
+
+(source_file
+    (call
+        name: (call
+            name: (identifier)
+            arguments: (argument_list
+                (identifier)))
+        arguments: (argument_list
+            (decimal)
+            (decimal))))
+
+==================
+Grouped member call
+==================
+
+(core.getStdoutWriter void).write "Hello world!"
+
+---
+
+(source_file
+    (call
+        name: (member
+            object: (parenthesize
+                (call
+                    name: (member
+                        object: (identifier)
+                        (extract)
+                        property: (identifier))
+                    arguments: (argument_list
+                        (identifier))))
+            (extract)
+            property: (identifier))
+        arguments: (argument_list
+            (double_quoted
+                (raw)))))
+
+==================
+Continued call application after comma-separated arguments
+==================
+
+for environment.arguments, {argument : String} { writer.write argument; }
+
+---
+
+(source_file
+    (call
+        name: (call
+            name: (identifier)
+            arguments: (argument_list
+                (member
+                    object: (identifier)
+                    (extract)
+                    property: (identifier))
+                (source
+                    (constant_assignment
+                        name: (identifier)
+                        (constant)
+                        value: (identifier)))))
+        arguments: (argument_list
+            (source
+                (call
+                    name: (member
+                        object: (identifier)
+                        (extract)
+                        property: (identifier))
+                    arguments: (argument_list
+                        (identifier)))))))
